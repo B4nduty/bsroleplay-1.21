@@ -8,6 +8,6 @@ import software.bernie.geckolib.util.Color;
 
 @Mixin(DyeableGeoArmorRenderer.class)
 public interface DyeableGeoArmorRendererInvoker {
-    @Invoker("getColorForBone")
+    @Invoker(value = "getColorForBone", remap = false)
     Color invokeGetColorForBone(GeoBone bone);
 }
