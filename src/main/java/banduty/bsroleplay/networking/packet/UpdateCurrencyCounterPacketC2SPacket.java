@@ -10,7 +10,6 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 
 public record UpdateCurrencyCounterPacketC2SPacket(int syncId, int increaseAmount) implements CustomPayload {
     public static final CustomPayload.Id<UpdateCurrencyCounterPacketC2SPacket> CURRENCY_COUNTER_ID = new CustomPayload.Id<>(BsRolePlay.identifierOf("currency_counter"));

@@ -3,16 +3,11 @@ package banduty.bsroleplay.networking.packet;
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.util.IEntityDataSaver;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
 
 public record StaminaBooleanS2CPacket(boolean active) implements CustomPayload {
     public static final CustomPayload.Id<StaminaBooleanS2CPacket> STAMINA_BOOLEAN_ID = new CustomPayload.Id<>(BsRolePlay.identifierOf("stamina_boolean"));

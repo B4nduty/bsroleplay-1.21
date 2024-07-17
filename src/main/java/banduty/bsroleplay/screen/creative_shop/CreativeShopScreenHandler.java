@@ -3,14 +3,12 @@ package banduty.bsroleplay.screen.creative_shop;
 
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
-import banduty.bsroleplay.block.entity.shops.ShopBlockEntity;
 import banduty.bsroleplay.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;

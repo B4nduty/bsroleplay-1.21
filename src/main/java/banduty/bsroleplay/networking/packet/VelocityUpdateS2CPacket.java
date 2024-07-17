@@ -8,7 +8,6 @@ import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
 
 public record VelocityUpdateS2CPacket(int playerEntity, double velocityX, double velocityY, double velocityZ) implements CustomPayload {
     public static final CustomPayload.Id<VelocityUpdateS2CPacket> VELOCITY_UPDATE_ID = new CustomPayload.Id<>(BsRolePlay.identifierOf("velocity_update"));

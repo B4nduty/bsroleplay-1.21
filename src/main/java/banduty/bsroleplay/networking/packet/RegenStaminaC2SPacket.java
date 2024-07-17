@@ -9,7 +9,6 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 
 public record RegenStaminaC2SPacket(boolean active) implements CustomPayload {
     public static final CustomPayload.Id<RegenStaminaC2SPacket> SET_REGEN_STAMINA_ID = new CustomPayload.Id<>(BsRolePlay.identifierOf("set_regen_stamina"));

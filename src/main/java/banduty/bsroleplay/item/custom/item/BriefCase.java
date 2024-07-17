@@ -1,9 +1,7 @@
 
 package banduty.bsroleplay.item.custom.item;
 
-import banduty.bsroleplay.item.client.blocks.ShopItemModel;
 import banduty.bsroleplay.item.client.items.BriefcaseModel;
-import banduty.bsroleplay.item.custom.blocks.ShopItem;
 import net.minecraft.item.Item;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
