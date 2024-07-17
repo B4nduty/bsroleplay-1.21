@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "P": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "R": {
+      "item": "bsroleplay:roleplay_core"
+    }
+  },
+  "pattern": [
+    "P L",
+    " PL",
+    "LLR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:neanderthal_chestplate"
+  }
+}

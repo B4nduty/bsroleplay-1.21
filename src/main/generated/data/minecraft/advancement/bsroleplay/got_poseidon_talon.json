@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:bsroleplay/got_roleplay_core",
+  "criteria": {
+    "got_poseidon_talon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:poseidon_talon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.poseidonTalon.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bsroleplay:poseidon_talon"
+    },
+    "title": {
+      "translate": "advancement.poseidonTalon.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_poseidon_talon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_briefcase": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:black_briefcase"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_brown_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:brown_dye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:black_briefcase_to_briefcase"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brown_dye",
+      "has_black_briefcase"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:black_briefcase_to_briefcase"
+    ]
+  }
+}

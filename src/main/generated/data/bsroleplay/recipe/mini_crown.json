@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "R": {
+      "item": "bsroleplay:roleplay_core"
+    }
+  },
+  "pattern": [
+    "GRG",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:mini_crown"
+  }
+}

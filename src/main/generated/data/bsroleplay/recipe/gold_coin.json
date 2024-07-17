@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bsroleplay:gold_coin_stack"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "bsroleplay:gold_coin"
+  }
+}

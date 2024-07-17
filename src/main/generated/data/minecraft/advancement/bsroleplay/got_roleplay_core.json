@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "got_roleplay_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:roleplay_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.roleplay_core.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "bsroleplay:roleplay_core"
+    },
+    "title": {
+      "translate": "advancement.roleplay_core.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_roleplay_core"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

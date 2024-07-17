@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "R": {
+      "item": "bsroleplay:roleplay_core"
+    }
+  },
+  "pattern": [
+    "L L",
+    "LRL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:police_boots"
+  }
+}

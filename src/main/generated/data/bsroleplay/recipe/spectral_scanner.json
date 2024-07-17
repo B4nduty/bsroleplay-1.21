@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "S": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "pattern": [
+    "ASA",
+    "SES",
+    "ASA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:spectral_scanner"
+  }
+}

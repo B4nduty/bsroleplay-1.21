@@ -1,0 +1,29 @@
+{
+  "judge_hammer_right_click": {
+    "subtitle": "sounds.bsroleplay.judge_hammer_right_click",
+    "sounds": [
+      "bsroleplay:judge_hammer_right_click"
+    ]
+  },
+
+  "handcuffed": {
+    "subtitle": "sounds.bsroleplay.handcuffed",
+    "sounds": [
+      "bsroleplay:handcuffed"
+    ]
+  },
+
+  "handcuffednt": {
+    "subtitle": "sounds.bsroleplay.handcuffednt",
+    "sounds": [
+      "bsroleplay:handcuffednt"
+    ]
+  },
+
+  "wallet_close": {
+    "subtitle": "sounds.bsroleplay.wallet_close",
+    "sounds": [
+      "bsroleplay:wallet_close"
+    ]
+  }
+}

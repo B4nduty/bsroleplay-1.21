@@ -1,0 +1,218 @@
+{
+  "itemgroup.bsroleplay.bsroleplay_item": "BsRoleplay Item",
+  "itemgroup.bsroleplay.bsroleplay_block": "BsRoleplay Block",
+  "itemgroup.bsroleplay.bsroleplay_armor": "BsRoleplay Armor",
+
+  "item.bsroleplay.pirate_helmet": "Tricorne",
+  "item.bsroleplay.pirate_chestplate": "Vêtements de Pirates",
+  "item.bsroleplay.pirate_leggings": "Pantalon de Pirate",
+
+  "item.bsroleplay.crown": "Couronne",
+  "item.bsroleplay.mini_crown": "Petite Couronne",
+
+  "item.bsroleplay.dream_mask": "Masque de Dream",
+  "item.bsroleplay.bunny_mask": "Masque de Lapin",
+
+  "item.bsroleplay.poseidon_talon": "Serre de Poséidon",
+  "tooltip.bsroleplay.poseidon_talon.tooltip": "Lorsque le clic droit crée une onde de choc",
+
+  "item.bsroleplay.judge_hammer": "Marteau du Juge",
+  "tooltip.bsroleplay.judgehammer.tooltip": "Lorsque vous faites un clic droit, cela fait un son",
+
+  "item.bsroleplay.police_baton": "Bâton de Police",
+  "tooltip.bsroleplay.policebaton_slowness.tooltip": "- Au Coup, donne un Effet de Lenteur",
+  "tooltip.bsroleplay.policebaton_save_jail.tooltip": "- Sur le Clic Droit, Sauver les Coords de Prison",
+  "tooltip.bsroleplay.policebaton_jail.tooltip": "- S'il est Menotté, il sera Envoyé en Prison",
+
+  "item.bsroleplay.police_helmet": "Casquette de Police",
+  "item.bsroleplay.police_chestplate": "Uniforme de Police",
+  "item.bsroleplay.police_leggings": "Pantalon de Police",
+  "item.bsroleplay.police_boots": "Chaussures de Police",
+
+  "item.bsroleplay.dune_caller": "Chant des Sables",
+  "tooltip.bsroleplay.dune_caller.tooltip": "Quand un Clic Droit invoque une Tempête de Sable",
+
+  "item.bsroleplay.halo": "Aura",
+
+  "item.bsroleplay.neanderthal_chestplate": "Vêtements en Cuir",
+
+  "item.bsroleplay.funeral_mask": "Masque Funéraire",
+
+  "item.bsroleplay.civic_crown": "Couronne Triomphale",
+  "item.bsroleplay.roman_toga": "Toge Romaine",
+
+  "item.bsroleplay.cowboy_hat": "Chapeau de Cowboy",
+  "item.bsroleplay.poncho": "Poncho",
+
+  "item.bsroleplay.healkit": "HealKit",
+
+  "item.bsroleplay.roleplay_core": "Noyau Roleplay",
+
+  "item.bsroleplay.protection_helmet": "Casque de Protection",
+  "item.bsroleplay.protection_chestplate": "Plastron de Protection",
+  "item.bsroleplay.protection_leggings": "Pantalon de Protection",
+  "item.bsroleplay.protection_boots": "Bottes de Protection",
+
+  "item.bsroleplay.dealer_mask": "Masque de Trafiquant",
+  "item.bsroleplay.invkit": "InvKit",
+  "item.bsroleplay.fusion_core": "Noyau de Fusion",
+
+  "item.bsroleplay.gadget_hat": "Chapeau Gadget",
+
+  "block.bsroleplay.tiny_banduty": "Mini-Banduty",
+
+  "block.bsroleplay.copper_coin": "Pièce de Cuivre",
+  "block.bsroleplay.copper_coin_stack": "Pièces de Cuivre Empilées",
+  "block.bsroleplay.gold_coin": "Pièce de Or",
+  "block.bsroleplay.gold_coin_stack": "Pièces de Or Empilées",
+  "block.bsroleplay.amethyst_coin": "Pièce de Améthyste",
+  "block.bsroleplay.amethyst_coin_stack": "Pièces de Améthyste Empilées",
+  "block.bsroleplay.netherite_coin": "Pièces de Netherite",
+  "block.bsroleplay.netherite_coin_stack": "Pièces de Netherite Empilées",
+
+  "block.bsroleplay.shop": "Boutique",
+  "block.bsroleplay.creative_shop": "Boutique Créative",
+
+  "item.bsroleplay.lawyer_blackblue_chestplate": "Costume Noir et Bleu",
+  "item.bsroleplay.lawyer_blackgold_chestplate": "Costume Noir et Or",
+  "item.bsroleplay.lawyer_blackred_chestplate": "Costume Noir et Rouge",
+  "item.bsroleplay.lawyer_leggings_black": "Pantalon Noir",
+  "item.bsroleplay.lawyer_boots_black": "Chaussures Noires",
+  "item.bsroleplay.lawyer_purplered_chestplate": "Costume Noir et Rouge",
+  "item.bsroleplay.lawyer_leggings_purple": "Pantalon Violet",
+  "item.bsroleplay.lawyer_boots_purple": "Chaussures Violettes",
+
+  "item.bsroleplay.briefcase": "Mallette",
+  "item.bsroleplay.black_briefcase": "Mallette Noire",
+  "item.bsroleplay.purple_briefcase": "Mallette Violette",
+
+  "item.bsroleplay.fedora": "Feutre",
+  "item.bsroleplay.fedora_purple": "Feutre Violette",
+  "item.bsroleplay.wallet": "Portefeuille",
+
+  "item.bsroleplay.handcuffs": "Menottes",
+  "item.bsroleplay.handcuffs_key": "Clé de Menottes",
+  "item.bsroleplay.endercuffs": "EnderMenottes",
+
+  "item.bsroleplay.spectral_scanner": "Scanner Spectral",
+
+  "message.bsroleplay.handcuff.handcuffed_1": "%s §4a été Menotté",
+  "message.bsroleplay.handcuff.handcuffed_2": "§7Vous §ravez été Menotté",
+  "message.bsroleplay.endercuffs.handcuffed": "§6Dieu %s §4a été déclassé au rang de Mortel",
+  "message.bsroleplay.handcuff_key.free_1": "%s §2a été Libéré",
+  "message.bsroleplay.handcuff_key.free_2": "§7Tu §ras été Libéré",
+
+  "sounds.bsroleplay.judge_hammer_right_click": "Coup de Marteau du Juge",
+  "sounds.bsroleplay.handcuffed": "Passer les Menottes",
+  "sounds.bsroleplay.handcuffednt": "Libérer",
+
+  "bsroleplay.shop.sell_popup": "Votre %s a été vendu",
+  "bsroleplay.shop.no_money": "Pas assez d'Argent",
+  "bsroleplay.shop.full_coins": "La Boutique est Pleine de Pièces, revenez plus tard",
+  "bsroleplay.shop.wallet_need": "Vous avez besoin d'un Portefeuille pour acheter",
+  "bsroleplay.shop.no_item_sell": "Il n'y a pas d'Article en Vente",
+
+  "text.autoconfig.bsroleplay.title": "Banduty's Roleplay",
+  "text.autoconfig.bsroleplay.category.common": "Commun",
+  "text.autoconfig.bsroleplay.category.currency": "Devise",
+  "text.autoconfig.bsroleplay.option.common.modifyJudgeHammerSound": "Marteau du Juge- Son",
+  "text.autoconfig.bsroleplay.option.common.modifyPoliceBatonSlowness": "Bâton de Police - Lenteur",
+  "text.autoconfig.bsroleplay.option.common.modifyProtectionSetEffects": "Ensemble de Protections - Effets",
+  "text.autoconfig.bsroleplay.option.common.modifyPoliceSetEffects": "Ensemble de Policiers - Effet",
+  "text.autoconfig.bsroleplay.option.common.handcuffsSlownessLevel": "Menottes - Niveau de Lenteur",
+  "text.autoconfig.bsroleplay.option.common.handcuffsWeaknessLevel": "Menottes - Niveau de Faiblesse",
+  "text.autoconfig.bsroleplay.option.common.handcuffsCooldown": "Menottes - Refroidissement",
+  "text.autoconfig.bsroleplay.option.common.handcuffsCooldown.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.duneCallerCooldown": "Chant des Sables - Refroidissement",
+  "text.autoconfig.bsroleplay.option.common.duneCallerCooldown.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonCooldown": "Serre de Poséidon - Refroidissement",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonCooldown.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.judgeHammerCooldown": "Marteau du Juge - Refroidissement",
+  "text.autoconfig.bsroleplay.option.common.judgeHammerCooldown.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessLevel": "Bâton de Police - Niveau de Lenteur",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessDuration": "Bâton de Police - Durée Lenteur",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessDuration.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.policeBatonCooldown": "Bâton de Police - Cooldown",
+  "text.autoconfig.bsroleplay.option.common.policeBatonCooldown.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.fusionCoreChanceGolem": "Fusion Core - Chances de Chute du Golem",
+  "text.autoconfig.bsroleplay.option.common.fusionCoreAmountDropGolem": "Fusion Core - Montant des Butins du Golem",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessTime": "HealKit - Temps de Cécité",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessChance": "HealKit - Risque de Cécité",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessTime": "HealKit - Temps de Faiblesse",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessChance": "HealKit - Risque de Faiblesse",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaTime": "HealKit - Temps de Nausée",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaChance": "HealKit - Risque de Nausée",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceTime": "HealKit - Temps de Résistance au Feu",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceChance": "HealKit - Possibilité de Résistance au Feu",
+  "text.autoconfig.bsroleplay.option.common.healKitInstantHealthChance": "HealKit - Guérison Immédiate",
+  "text.autoconfig.bsroleplay.option.common.invKitConsumeTime": "InvKit - Consume Time",
+  "text.autoconfig.bsroleplay.option.common.invKitConsumeTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.showItemTooltips": "Info-bulles des Éléments",
+  "text.autoconfig.bsroleplay.option.common.funeralMaskChestsChance": "Chances de Coffre - Masque Funéraire",
+  "text.autoconfig.bsroleplay.option.common.duneCallerChestsChance": "Chances de Coffre - Chant des Sables",
+  "text.autoconfig.bsroleplay.option.common.gadgetHatChestsChance": "Chances de Coffre - Chapeau Gadget",
+  "text.autoconfig.bsroleplay.option.common.invKit1stStageTime": "InvKit - 1ère Étape",
+  "text.autoconfig.bsroleplay.option.common.invKit1stStageTime.@Tooltip": "En Secondes",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonChestsChance": "Chances de Coffre - Serre de Poséidon",
+  "text.autoconfig.bsroleplay.option.common.modifyEndercuffsFire": "EnderMenottes - Briquet",
+
+  "text.autoconfig.bsroleplay.option.currency.showCoinPrice": "Afficher le Prix des Pièces",
+  "text.autoconfig.bsroleplay.option.currency.walletMaxCoins": "Portefeuille Max Coins",
+  "text.autoconfig.bsroleplay.option.currency.walletMaxCoins.@Tooltip": "Max 99999",
+  "text.autoconfig.bsroleplay.option.currency.hostileMobsDropCoins": "Hostile Mobs Drop Coins",
+  "text.autoconfig.bsroleplay.option.currency.bossMobsDropCoins": "Boss Mobs Drop Coins",
+  "text.autoconfig.bsroleplay.option.currency.enderDragonDropCoins": "Ender Dragon Drop Coins",
+  "text.autoconfig.bsroleplay.option.currency.oresDropCoins": "Ores Drop Coins",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinChanceHostileMobs": "Hostile Mobs - Chances d'obtenir du Pièce de Cuivre",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinMaxAmountHostileMobs": "Hostile Mobs - Maximum d'obtention de Pièce de Cuivre",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceHostileMobs": "Hostile Mobs - Chances d'obtenir du Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountHostileMobs": "Hostile Mobs - Maximum d'obtention de Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceBossMobs": "Boss Mobs - Chances d'obtenir du Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountBossMobs": "Boss Mobs - Maximum d'obtention de Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceBossMobs": "Boss Mobs - Chances d'obtenir du Pièce de Améthyste",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountBossMobs": "Boss Mobs - Maximum d'obtention de Pièce de Améthyste",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceEnderDragon": "Ender Dragon - Chances d'obtenir du Pièce de Améthyste",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountEnderDragon": "Ender Dragon - Maximum d'obtention de Pièce de Améthyste",
+  "text.autoconfig.bsroleplay.option.currency.netheriteCoinChanceEnderDragon": "Ender Dragon - Chances d'obtenir du Pièce de Netherite",
+  "text.autoconfig.bsroleplay.option.currency.netheriteCoinMaxAmountEnderDragon": "Ender Dragon - Maximum d'obtention de Pièce de Netherite",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinChanceOres": "Ores - Chances d'obtenir du Pièce de Cuivre",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinMaxAmountOres": "Ores - Maximum d'obtention de Pièce de Cuivre",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceOres": "Ores - Chances d'obtenir du Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountOres": "Ores - Maximum d'obtention de Pièce de Or",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceOres": "Ores - Chances d'obtenir du Pièce de Améthyste",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountOres": "Ores - Maximum d'obtention de Pièce de Améthyste",
+
+  "advancement.police_set.title": "I'm Justice",
+  "advancement.police_set.desc": "Fabriquez l'Ensemble de Police, le Bâton de Police et Menottes",
+
+  "advancement.roleplay_core.title": "Let's Roleplay!",
+  "advancement.roleplay_core.desc": "Créer un Noyau Roleplay",
+
+  "advancement.funeral_mask.title": "Soyez le Joueur Ultime",
+  "advancement.funeral_mask.desc": "Trouver un Masque Funéraire et le Chant des Sables",
+
+  "advancement.poseidonTalon.title": "Le Roi des Pirates",
+  "advancement.poseidonTalon.desc": "Trouver un Serre de Poséidon",
+
+  "advancement.fusion_core.title": "Le Savant Fou",
+  "advancement.fusion_core.desc": "Trouver le Noyau de Fusion",
+
+  "advancement.purple_lawyer_set.title": "Purple Guy",
+  "advancement.purple_lawyer_set.desc": "Fabriquez la Mallette Violette et l'ensemble d'Avocat Violet",
+
+  "advancement.endercuffs.title": "Le Destructeur de Dieux",
+  "advancement.endercuffs.desc": "Obtenir des EnderMenottes",
+
+  "advancement.netherite_coin_stack.title": "Fils de Riche",
+  "advancement.netherite_coin_stack.desc": "Obtenez une Pile de Pièces Netherite et le Fedora",
+  "key.category.bsroleplay": "BsRolePlay",
+  "key.bsroleplay.police_speed": "Police Speed Boost",
+
+
+  "effect.bsroleplay.sandstorm": "Tempête de Sable",
+  "effect.bsroleplay.tidal_surge": "Onde de Marée"
+}

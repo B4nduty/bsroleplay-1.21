@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "bsroleplay:roleplay_core"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "R": {
+      "item": "minecraft:brown_wool"
+    }
+  },
+  "pattern": [
+    " I ",
+    "IBI",
+    "RRR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:pirate_helmet"
+  }
+}

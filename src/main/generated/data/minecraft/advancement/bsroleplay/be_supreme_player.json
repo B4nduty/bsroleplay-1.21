@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:bsroleplay/got_roleplay_core",
+  "criteria": {
+    "got_dune_caller": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:dune_caller"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_funeral_mask": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:funeral_mask"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.funeral_mask.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bsroleplay:funeral_mask"
+    },
+    "title": {
+      "translate": "advancement.funeral_mask.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_funeral_mask"
+    ],
+    [
+      "got_dune_caller"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

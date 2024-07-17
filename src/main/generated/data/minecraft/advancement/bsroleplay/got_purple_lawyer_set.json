@@ -1,0 +1,86 @@
+{
+  "parent": "minecraft:bsroleplay/got_roleplay_core",
+  "criteria": {
+    "got_purple_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:lawyer_boots_purple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_purple_briefcase": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:purple_briefcase"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_purple_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:lawyer_purplered_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_purple_fedora": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:fedora_purple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_purple_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:lawyer_leggings_purple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.purple_lawyer_set.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bsroleplay:purple_briefcase"
+    },
+    "title": {
+      "translate": "advancement.purple_lawyer_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_purple_briefcase"
+    ],
+    [
+      "got_purple_fedora"
+    ],
+    [
+      "got_purple_chestplate"
+    ],
+    [
+      "got_purple_leggings"
+    ],
+    [
+      "got_purple_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

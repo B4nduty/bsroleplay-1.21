@@ -1,0 +1,218 @@
+{
+  "itemgroup.bsroleplay.bsroleplay_item": "BsRoleplay Item",
+  "itemgroup.bsroleplay.bsroleplay_block": "BsRoleplay Block",
+  "itemgroup.bsroleplay.bsroleplay_armor": "BsRoleplay Armor",
+
+  "item.bsroleplay.pirate_helmet": "Tricornio",
+  "item.bsroleplay.pirate_chestplate": "Vestimenta de Pirata",
+  "item.bsroleplay.pirate_leggings": "Pantalones Pirata",
+
+  "item.bsroleplay.crown": "Corona",
+  "item.bsroleplay.mini_crown": "Corona Chiquita",
+
+  "item.bsroleplay.dream_mask": "Máscara de Dream",
+  "item.bsroleplay.bunny_mask": "Máscara de Conejo",
+
+  "item.bsroleplay.poseidon_talon": "Garra de Poseidón",
+  "tooltip.bsroleplay.poseidon_talon.tooltip": "Cuando haces clic derecho, crea una onda de choque",
+
+  "item.bsroleplay.judge_hammer": "Martillo de Juez",
+  "tooltip.bsroleplay.judgehammer.tooltip": "Al darle Clic Derecho hace Sonido",
+
+  "item.bsroleplay.police_baton": "Porra Policial",
+  "tooltip.bsroleplay.policebaton_slowness.tooltip": "- Al Golpear da Efecto de Lentitud",
+  "tooltip.bsroleplay.policebaton_save_jail.tooltip": "- Clic Derecho para guardar Coordenadas de la Carcel",
+  "tooltip.bsroleplay.policebaton_jail.tooltip": "- Si está Esposado, al Golpear Teleporta a la Carcel",
+
+  "item.bsroleplay.police_helmet": "Gorra Policial",
+  "item.bsroleplay.police_chestplate": "Uniforme Policial",
+  "item.bsroleplay.police_leggings": "Pantalón Policial",
+  "item.bsroleplay.police_boots": "Zapatos Policiales",
+
+  "item.bsroleplay.dune_caller": "Susurrador del Desierto",
+  "tooltip.bsroleplay.dune_caller.tooltip": "Clic Derecho para invocar una Tormenta de Arena",
+
+  "item.bsroleplay.halo": "Aureola",
+
+  "item.bsroleplay.neanderthal_chestplate": "Ropa de Cuero",
+
+  "item.bsroleplay.funeral_mask": "Máscara Funeraria",
+
+  "item.bsroleplay.civic_crown": "Láurea",
+  "item.bsroleplay.roman_toga": "Toga Romana",
+
+  "item.bsroleplay.cowboy_hat": "Sombrero de Cowboy",
+  "item.bsroleplay.poncho": "Poncho",
+
+  "item.bsroleplay.healkit": "HealKit",
+
+  "item.bsroleplay.roleplay_core": "Núcleo de Roleplay",
+
+  "item.bsroleplay.protection_helmet": "Casco de Protección",
+  "item.bsroleplay.protection_chestplate": "Peto de Protección",
+  "item.bsroleplay.protection_leggings": "Pantalones de Protección",
+  "item.bsroleplay.protection_boots": "Botas de Protección",
+
+  "item.bsroleplay.dealer_mask": "Máscara de Traficante",
+  "item.bsroleplay.invkit": "InvKit",
+  "item.bsroleplay.fusion_core": "Núcleo de Fusión",
+
+  "item.bsroleplay.gadget_hat": "Sombrero de Artilugios",
+
+  "block.bsroleplay.tiny_banduty": "Mini Banduty",
+
+  "block.bsroleplay.copper_coin": "Moneda de Cobre",
+  "block.bsroleplay.copper_coin_stack": "Pila de Monedas de Cobre",
+  "block.bsroleplay.gold_coin": "Moneda de Oro",
+  "block.bsroleplay.gold_coin_stack": "Pila de Monedas de Oro",
+  "block.bsroleplay.amethyst_coin": "Moneda de Amatista",
+  "block.bsroleplay.amethyst_coin_stack": "Pila de Monedas de Amatista",
+  "block.bsroleplay.netherite_coin": "Moneda de Netherita",
+  "block.bsroleplay.netherite_coin_stack": "Pila de Monedas de Netherita",
+
+  "block.bsroleplay.shop": "Tienda",
+  "block.bsroleplay.creative_shop": "Tienda Infinita",
+
+  "item.bsroleplay.lawyer_blackblue_chestplate": "Traje Negro y Azul",
+  "item.bsroleplay.lawyer_blackgold_chestplate": "Traje Negro y Oro",
+  "item.bsroleplay.lawyer_blackred_chestplate": "Traje Negro y Rojo",
+  "item.bsroleplay.lawyer_leggings_black": "Pantalones Negros",
+  "item.bsroleplay.lawyer_boots_black": "Zapatos Negros",
+  "item.bsroleplay.lawyer_purplered_chestplate": "Traje Morado y Rojo",
+  "item.bsroleplay.lawyer_leggings_purple": "Pantalones Morados",
+  "item.bsroleplay.lawyer_boots_purple": "Zapatos Morados",
+
+  "item.bsroleplay.briefcase": "Maletín",
+  "item.bsroleplay.black_briefcase": "Maletín Negro",
+  "item.bsroleplay.purple_briefcase": "Maletín Morado",
+
+  "item.bsroleplay.fedora": "Sombrero de Fieltro",
+  "item.bsroleplay.fedora_purple": "Sombrero de Fieltro Morado",
+  "item.bsroleplay.wallet": "Cartera",
+
+  "item.bsroleplay.handcuffs": "Esposas",
+  "item.bsroleplay.handcuffs_key": "Llave de Esposas",
+  "item.bsroleplay.endercuffs": "Esposas del End",
+
+  "item.bsroleplay.spectral_scanner": "Escáner Espectral",
+
+  "message.bsroleplay.handcuff.handcuffed_1": "%s §4ha sido esposado",
+  "message.bsroleplay.handcuff.handcuffed_2": "Has sido esposado",
+  "message.bsroleplay.endercuffs.handcuffed": "§6El Dios %s §4ha sido rebajado a un simple Mortal",
+  "message.bsroleplay.handcuff_key.free_1": "%s §2ha sido liberado",
+  "message.bsroleplay.handcuff_key.free_2": "Has sido liberado",
+
+  "sounds.bsroleplay.judge_hammer_right_click": "Golpe de Martillo de Juez",
+  "sounds.bsroleplay.handcuffed": "Esposar",
+  "sounds.bsroleplay.handcuffednt": "Exesposado",
+
+  "bsroleplay.shop.sell_popup": "Tu %s ha sido vendido",
+  "bsroleplay.shop.no_money": "Dinero insuficiente",
+  "bsroleplay.shop.full_coins": "La Tienda está llena de Monedas, vuelve más tarde.",
+  "bsroleplay.shop.wallet_need": "Necesitas una Cartera para Comprar",
+  "bsroleplay.shop.no_item_sell": "No hay ningún Artículo en Venta",
+
+  "text.autoconfig.bsroleplay.title": "Banduty's Roleplay",
+  "text.autoconfig.bsroleplay.category.common": "Común",
+  "text.autoconfig.bsroleplay.category.currency": "Divisa",
+  "text.autoconfig.bsroleplay.option.common.modifyJudgeHammerSound": "Martillo del Juez - Sonido",
+  "text.autoconfig.bsroleplay.option.common.modifyPoliceBatonSlowness": "Porra Policial - Lentitud",
+  "text.autoconfig.bsroleplay.option.common.modifyProtectionSetEffects": "Conjunto de Protección - Efectos",
+  "text.autoconfig.bsroleplay.option.common.modifyPoliceSetEffects": "Conjunto de Policia - Efecto",
+  "text.autoconfig.bsroleplay.option.common.handcuffsSlownessLevel": "Esposas - Nivel de Lentitud",
+  "text.autoconfig.bsroleplay.option.common.handcuffsWeaknessLevel": "Esposas - Nivel de Debilidad",
+  "text.autoconfig.bsroleplay.option.common.handcuffsCooldown": "Esposas - Enfriamiento",
+  "text.autoconfig.bsroleplay.option.common.handcuffsCooldown.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.duneCallerCooldown": "Susurrador del Desierto - Enfriamiento",
+  "text.autoconfig.bsroleplay.option.common.duneCallerCooldown.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonCooldown": "Garra de Poseidón - Enfriamiento",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonCooldown.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.judgeHammerCooldown": "Martillo de Juez - Enfriamiento",
+  "text.autoconfig.bsroleplay.option.common.judgeHammerCooldown.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessLevel": "Porra Policial - Nivel de Lentitud",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessDuration": "Porra Policial - Duración de Lentitud",
+  "text.autoconfig.bsroleplay.option.common.policeBatonSlownessDuration.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.policeBatonCooldown": "Porra Policial - Cooldown",
+  "text.autoconfig.bsroleplay.option.common.policeBatonCooldown.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.fusionCoreChanceGolem": "Fusion Core - Golem Probabilidad de Drop",
+  "text.autoconfig.bsroleplay.option.common.fusionCoreAmountDropGolem": "Fusion Core - Golem Cantidad de Drop",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessTime": "HealKit - Tiempo de Ceguera",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.healKitBlindnessChance": "HealKit - Posibilidad Ceguera",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessTime": "HealKit - Tiempo de Debilidad",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.healKitWeaknessChance": "HealKit - Posibilidad Debilidad",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaTime": "HealKit - Tiempo de Nausea",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.healKitNauseaChance": "HealKit - Posibilidad Nausea",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceTime": "HealKit - Tiempo de Resistencia al Fuego",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.healKitFireResistanceChance": "HealKit - Posibilidad Resistencia al Fuego",
+  "text.autoconfig.bsroleplay.option.common.healKitInstantHealthChance": "HealKit - Probabilidad Curación",
+  "text.autoconfig.bsroleplay.option.common.invKitConsumeTime": "Pastilla Depresiva - Temps de Consommation",
+  "text.autoconfig.bsroleplay.option.common.invKitConsumeTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.showItemTooltips": "Información sobre Herramientas",
+  "text.autoconfig.bsroleplay.option.common.funeralMaskChestsChance": "Probabilidad de Cofres - Máscara Funeraria",
+  "text.autoconfig.bsroleplay.option.common.duneCallerChestsChance": "Probabilidad de Cofres - Susurrador del Desierto",
+  "text.autoconfig.bsroleplay.option.common.gadgetHatChestsChance": "Probabilidad de Cofres - Sombrero de Artilugios",
+  "text.autoconfig.bsroleplay.option.common.invKit1stStageTime": "Pastilla Depresiva - Primera Etapa",
+  "text.autoconfig.bsroleplay.option.common.invKit1stStageTime.@Tooltip": "En Segundos",
+  "text.autoconfig.bsroleplay.option.common.poseidonTalonChestsChance": "Probabilidad de Cofres - Garra de Poseidón",
+  "text.autoconfig.bsroleplay.option.common.modifyEndercuffsFire": "Esposas del End - Mechero",
+
+  "text.autoconfig.bsroleplay.option.currency.showCoinPrice": "Mostrar Precio de las Monedas",
+  "text.autoconfig.bsroleplay.option.currency.walletMaxCoins": "Cartera Max Monedas",
+  "text.autoconfig.bsroleplay.option.currency.walletMaxCoins.@Tooltip": "Max 99999",
+  "text.autoconfig.bsroleplay.option.currency.hostileMobsDropCoins": "Mobs Hostiles Sueltan Monedas",
+  "text.autoconfig.bsroleplay.option.currency.bossMobsDropCoins": "Mobs Jefes Sueltan Monedas",
+  "text.autoconfig.bsroleplay.option.currency.enderDragonDropCoins": "Ender Dragon Suelta Monedas",
+  "text.autoconfig.bsroleplay.option.currency.oresDropCoins": "Minerales Sueltan Monedas",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinChanceHostileMobs": "Mobs Hostiles - Probabilidad de Caída de Moneda de Cobre",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinMaxAmountHostileMobs": "Mobs Hostiles - Cantidad Máxima de Caída de Moneda de Cobre",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceHostileMobs": "Mobs Hostiles - Probabilidad de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountHostileMobs": "Mobs Hostiles - Cantidad Máxima de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceBossMobs": "Mobs Jefes - Probabilidad de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountBossMobs": "Mobs Jefes - Cantidad Máxima de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceBossMobs": "Mobs Jefes - Probabilidad de Caída de Moneda de Amatista",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountBossMobs": "Mobs Jefes - Cantidad Máxima de Caída de Moneda de Amatista",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceEnderDragon": "Ender Dragon - Probabilidad de Caída de Moneda de Amatista",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountEnderDragon": "Ender Dragon - Cantidad Máxima de Caída de Moneda de Amatista",
+  "text.autoconfig.bsroleplay.option.currency.netheriteCoinChanceEnderDragon": "Ender Dragon - Probabilidad de Caída de Moneda de Netherita",
+  "text.autoconfig.bsroleplay.option.currency.netheriteCoinMaxAmountEnderDragon": "Ender Dragon - Cantidad Máxima de Caída de Moneda de Netherita",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinChanceOres": "Minerales - Probabilidad de Caída de Moneda de Cobre",
+  "text.autoconfig.bsroleplay.option.currency.copperCoinMaxAmountOres": "Minerales - Cantidad Máxima de Caída de Moneda de Cobre",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinChanceOres": "Minerales - Probabilidad de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.goldCoinMaxAmountOres": "Minerales - Cantidad Máxima de Caída de Moneda de Oro",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinChanceOres": "Minerales - Probabilidad de Caída de Moneda de Amatista",
+  "text.autoconfig.bsroleplay.option.currency.amethystCoinMaxAmountOres": "Minerales - Cantidad Máxima de Caída de Moneda de Amatista",
+
+  "advancement.police_set.title": "I'm Justice",
+  "advancement.police_set.desc": "Crea el Conjunto Policial, la Porra Policial y las esposas",
+
+  "advancement.roleplay_core.title": "Let's Roleplay!",
+  "advancement.roleplay_core.desc": "Craftea un Núcleo de Roleplay",
+
+  "advancement.funeral_mask.title": "Sé el Jugador Supremo",
+  "advancement.funeral_mask.desc": "Encuentra una Máscara Funeraria y el Susurrador del Desierto",
+
+  "advancement.poseidonTalon.title": "El Rey de los Piratas",
+  "advancement.poseidonTalon.desc": "Encuentra una Garra de Poseidón",
+
+  "advancement.fusion_core.title": "El Científico Loco",
+  "advancement.fusion_core.desc": "Encuentra el Núcleo de Fusión",
+
+  "advancement.purple_lawyer_set.title": "Hombre de Morado",
+  "advancement.purple_lawyer_set.desc": "Crea el Maletín Morado y el conjunto de Abogado Morado",
+
+  "advancement.endercuffs.title": "El Destructor de Dioses",
+  "advancement.endercuffs.desc": "Consigue unas Esposas del Ender",
+
+  "advancement.netherite_coin_stack.title": "El Niño Pijo",
+  "advancement.netherite_coin_stack.desc": "Obtén una Pila de Monedas de Netherita y Fedora",
+  "key.category.bsroleplay": "BsRolePlay",
+  "key.bsroleplay.police_speed": "Police Speed Boost",
+
+
+  "effect.bsroleplay.sandstorm": "Tormenta de Arena",
+  "effect.bsroleplay.tidal_surge": "Marejada"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:oak_leaves"
+    },
+    "R": {
+      "item": "bsroleplay:roleplay_core"
+    }
+  },
+  "pattern": [
+    "OOO",
+    "ORO",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:civic_crown"
+  }
+}

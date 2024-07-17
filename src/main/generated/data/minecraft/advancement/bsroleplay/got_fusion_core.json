@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:bsroleplay/got_roleplay_core",
+  "criteria": {
+    "got_fusion_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bsroleplay:fusion_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.fusion_core.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bsroleplay:fusion_core"
+    },
+    "title": {
+      "translate": "advancement.fusion_core.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_fusion_core"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

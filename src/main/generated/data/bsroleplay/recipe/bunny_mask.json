@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "bsroleplay:roleplay_core"
+    },
+    "O": {
+      "item": "minecraft:pink_wool"
+    },
+    "R": {
+      "item": "minecraft:red_wool"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "O O",
+    "RDR",
+    "WOW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bsroleplay:bunny_mask"
+  }
+}

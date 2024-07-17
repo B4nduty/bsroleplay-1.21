@@ -1,0 +1,20 @@
+
+{
+	"required": true,
+	"package": "banduty.bsroleplay.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"MilkBucketMixin",
+		"PlayerEntityMixin",
+		"ServerItemCooldownManagerMixin",
+		"DyeableGeoArmorRendererInvoker"
+	],
+	"client": [
+		"BackgroundRendererMixin",
+		"ClientAdvancementManagerAccessor",
+		"PlayerEntityRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
