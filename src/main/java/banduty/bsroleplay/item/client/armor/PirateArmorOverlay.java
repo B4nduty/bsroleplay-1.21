@@ -1,6 +1,7 @@
 package banduty.bsroleplay.item.client.armor;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.item.ModItems;
 import banduty.bsroleplay.item.custom.armor.PirateArmorItem;
 import banduty.bsroleplay.mixin.DyeableGeoArmorRendererInvoker;
 import net.minecraft.client.render.RenderLayer;
@@ -15,8 +16,6 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.util.Color;
 
 public class PirateArmorOverlay extends GeoRenderLayer<PirateArmorItem> {
-    private static final Identifier TEXTURE = Identifier.of(BsRolePlay.MOD_ID, "textures/armor/pirate_armor_overlay.png");
-
     public PirateArmorOverlay(GeoRenderer<PirateArmorItem> entityRenderer) {
         super(entityRenderer);
     }
@@ -30,6 +29,15 @@ public class PirateArmorOverlay extends GeoRenderLayer<PirateArmorItem> {
                        VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, renderType,
                 buffer, partialTick, packedLight, packedOverlay, Color.WHITE.argbInt());
+
+        Identifier TEXTURE = Identifier.of("missing");
+        if (animatable == ModItems.COCKED_HAT) TEXTURE = Identifier.of(BsRolePlay.MOD_ID, "textures/armor/cocked_hat_overlay.png");
+        if (animatable == ModItems.BICORNE || animatable == ModItems.PIRATE_CHESTPLATE
+                || animatable == ModItems.PIRATE_LEGGINGS || animatable == ModItems.PIRATE_BOOTS)
+            TEXTURE = Identifier.of(BsRolePlay.MOD_ID, "textures/armor/pirate_attire_overlay.png");
+        if (animatable == ModItems.BANDANNA || animatable == ModItems.BUCCANEER_CHESTPLATE
+                || animatable == ModItems.BUCCANEER_LEGGINGS || animatable == ModItems.BUCCANEER_BOOTS)
+            TEXTURE = Identifier.of(BsRolePlay.MOD_ID, "textures/armor/buccaneer_attire_overlay.png");
 
         RenderLayer armorRenderType = RenderLayer.getArmorCutoutNoCull(TEXTURE);
         GeoBone bone = getBoneYouAreInterestedIn(bakedModel);

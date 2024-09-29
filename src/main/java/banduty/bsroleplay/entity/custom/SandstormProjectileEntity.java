@@ -33,7 +33,7 @@ public class SandstormProjectileEntity extends ThrownItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.SANDSTORM_PROJECTILE;
+        return ModItems.DESERT_CORE;
     }
 
     @Override

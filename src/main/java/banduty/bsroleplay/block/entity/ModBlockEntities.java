@@ -75,5 +75,8 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(NetheriteCoinStackBlockEntity::new,
                     ModBlocks.NETHERITE_COIN_STACK).build());
 
-
+    public static final BlockEntityType<StrongboxBlockEntity> STRONGBOX_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+            BsRolePlay.identifierOf("strongbox_block_entity"),
+            BlockEntityType.Builder.create(StrongboxBlockEntity::new,
+                    ModBlocks.STRONGBOX).build());
 }

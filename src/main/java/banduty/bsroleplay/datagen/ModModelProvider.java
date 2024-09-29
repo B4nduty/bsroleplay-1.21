@@ -54,6 +54,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.INVKIT, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.MEDICBAG, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.SPECTRAL_SCANNER, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.FUSION_CORE, Models.GENERATED);
@@ -82,7 +84,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FEDORA_PURPLE, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.DUNE_CALLER, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.SANDSTORM_PROJECTILE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DESERT_CORE, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.POSEIDON_TALON, Models.HANDHELD);
     }

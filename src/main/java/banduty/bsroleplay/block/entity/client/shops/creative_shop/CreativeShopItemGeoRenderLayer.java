@@ -1,6 +1,6 @@
 package banduty.bsroleplay.block.entity.client.shops.creative_shop;
 
-import banduty.bsroleplay.BsRolePlayClient;
+import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
@@ -29,9 +29,9 @@ public class CreativeShopItemGeoRenderLayer extends GeoRenderLayer<CreativeShopB
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = animatable.getRenderStack();
         poseStack.push();
-        poseStack.translate(0f, 0.7f + (float) BsRolePlayClient.getHeight() / 2000, 0f);
+        poseStack.translate(0f, 0.7f + (float) BsRolePlay.getHeight() / 2000, 0f);
         poseStack.scale(0.5f, 0.5f, 0.5f);
-        poseStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(BsRolePlayClient.getAngle()));
+        poseStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(BsRolePlay.getAngle()));
 
         itemRenderer.renderItem(stack, ModelTransformationMode.GROUND, getLightLevel(Objects.requireNonNull(animatable.getWorld()),
                 animatable.getPos()), OverlayTexture.DEFAULT_UV, poseStack, bufferSource, animatable.getWorld(), 1);

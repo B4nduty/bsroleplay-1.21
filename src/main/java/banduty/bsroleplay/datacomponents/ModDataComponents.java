@@ -15,6 +15,9 @@ public class ModDataComponents {
     public static final ComponentType<Integer> MONEY = register("money",
             ComponentType.<Integer>builder().codec(Codec.INT).packetCodec(PacketCodecs.INTEGER).build());
 
+    public static final ComponentType<Integer> CHARGES = register("charges",
+            ComponentType.<Integer>builder().codec(Codec.INT).packetCodec(PacketCodecs.INTEGER).build());
+
     private static <T> ComponentType<T> register(String name, ComponentType<T> builder) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, BsRolePlay.identifierOf(name), builder);
     }

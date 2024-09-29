@@ -3,9 +3,15 @@
   "itemgroup.bsroleplay.bsroleplay_block": "BsRoleplay Block",
   "itemgroup.bsroleplay.bsroleplay_armor": "BsRoleplay Armor",
 
-  "item.bsroleplay.pirate_helmet": "Tricorne",
+  "item.bsroleplay.cocked_hat": "Cocked Hat",
+  "item.bsroleplay.bicorne": "Bicorne",
   "item.bsroleplay.pirate_chestplate": "Vêtements de Pirates",
   "item.bsroleplay.pirate_leggings": "Pantalon de Pirate",
+  "item.bsroleplay.pirate_boots": "Bottes de Pirate",
+  "item.bsroleplay.bandanna": "Foulard",
+  "item.bsroleplay.buccaneer_chestplate": "Vêtements de Boucanier",
+  "item.bsroleplay.buccaneer_leggings": "Pantalon de Boucanier",
+  "item.bsroleplay.buccaneer_boots": "Bottes de Boucanier",
 
   "item.bsroleplay.crown": "Couronne",
   "item.bsroleplay.mini_crown": "Petite Couronne",
@@ -30,9 +36,12 @@
   "item.bsroleplay.police_boots": "Chaussures de Police",
 
   "item.bsroleplay.dune_caller": "Chant des Sables",
+  "item.bsroleplay.desert_core": "Noyau du Désert",
   "tooltip.bsroleplay.dune_caller.tooltip": "Quand un Clic Droit invoque une Tempête de Sable",
 
   "item.bsroleplay.halo": "Aura",
+
+  "item.bsroleplay.medicbag": "Sac Médical",
 
   "item.bsroleplay.neanderthal_chestplate": "Vêtements en Cuir",
 
@@ -72,6 +81,8 @@
 
   "block.bsroleplay.shop": "Boutique",
   "block.bsroleplay.creative_shop": "Boutique Créative",
+
+  "block.bsroleplay.strongbox": "Coffre-fort",
 
   "item.bsroleplay.lawyer_blackblue_chestplate": "Costume Noir et Bleu",
   "item.bsroleplay.lawyer_blackgold_chestplate": "Costume Noir et Or",

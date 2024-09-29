@@ -93,7 +93,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.ROLEPLAY_CORE), conditionsFromItem(ModItems.ROLEPLAY_CORE))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.HALO)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PIRATE_HELMET, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.COCKED_HAT, 1)
                 .pattern(" I ")
                 .pattern("IBI")
                 .pattern("RRR")
@@ -103,7 +103,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
                 .criterion(hasItem(ModItems.ROLEPLAY_CORE), conditionsFromItem(ModItems.ROLEPLAY_CORE))
                 .criterion(hasItem(Items.BROWN_WOOL), conditionsFromItem(Items.BROWN_WOOL))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.PIRATE_HELMET)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.COCKED_HAT)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PIRATE_CHESTPLATE, 1)
                 .pattern("RWR")
@@ -692,6 +692,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.RED_CARPET), conditionsFromItem(Items.RED_CARPET))
                 .criterion(hasItem(Items.GLASS), conditionsFromItem(Items.GLASS))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SHOP)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STRONGBOX, 1)
+                .pattern("III")
+                .pattern("IRI")
+                .pattern("III")
+                .input('R', ModItems.ROLEPLAY_CORE)
+                .input('I', Items.IRON_BLOCK)
+                .criterion(hasItem(ModItems.ROLEPLAY_CORE), conditionsFromItem(ModItems.ROLEPLAY_CORE))
+                .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.STRONGBOX)));
 
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.COPPER_COIN, RecipeCategory.MISC,
                 ModItems.COPPER_COIN_STACK);

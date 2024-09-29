@@ -1,9 +1,10 @@
-// 1.21	2024-07-14T15:19:50.1185749	BsRolePlay/Block Loot Tables
+// 1.21	2024-09-03T01:30:10.2611214	BsRolePlay/Block Loot Tables
 cafbecc57654ddbb2805fef2d50ca592c60e9c0d data\bsroleplay\loot_table\blocks\copper_coin.json
 9deaa605ab56a38c90288bfe455d5f3731f71146 data\bsroleplay\loot_table\blocks\gold_coin.json
 15bd07143e5396ba052378e009ced7e0f6056de1 data\bsroleplay\loot_table\blocks\creative_shop.json
 2b5003a5f64f1d22d22c0317e605d4131a10547a data\bsroleplay\loot_table\blocks\copper_coin_stack.json
 ece0afc97a0b28c1d3e408bb6371afffa021b237 data\bsroleplay\loot_table\blocks\netherite_coin.json
+00343fab7f02d6a3a12062f3b34c1eac00068f6a data\bsroleplay\loot_table\blocks\strongbox.json
 1e43f6cc19e8e62925c8a71d18df38b108c48253 data\bsroleplay\loot_table\blocks\gold_coin_stack.json
 ee4b1a658b13dc4b0f9a0e9addd92cd11d86f881 data\bsroleplay\loot_table\blocks\tiny_banduty.json
 9a4a2b34f64d4e9fc348aead22b0e7d281d81434 data\bsroleplay\loot_table\blocks\netherite_coin_stack.json

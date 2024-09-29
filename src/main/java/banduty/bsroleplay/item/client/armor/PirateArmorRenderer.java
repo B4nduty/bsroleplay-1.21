@@ -1,6 +1,6 @@
 package banduty.bsroleplay.item.client.armor;
 
-import banduty.bsroleplay.BsRolePlayClient;
+import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.item.custom.armor.PirateArmorItem;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ public class PirateArmorRenderer extends DyeableGeoArmorRenderer<PirateArmorItem
 
     @Override
     protected @NotNull Color getColorForBone(GeoBone bone) {
-        int color = DyedColorComponent.getColor(this.getCurrentStack(), BsRolePlayClient.getColor(10511680));
+        int color = DyedColorComponent.getColor(this.getCurrentStack(), BsRolePlay.getColor(10511680));
         return new Color((0xFF << 24) | color);
     }
 }

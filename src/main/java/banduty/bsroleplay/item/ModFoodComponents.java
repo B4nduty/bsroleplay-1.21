@@ -3,8 +3,7 @@ package banduty.bsroleplay.item;
 
 import banduty.bsroleplay.BsRolePlay;
 import net.minecraft.component.type.FoodComponent;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.effect.*;
 
 public class ModFoodComponents {
     public static final FoodComponent HEALKIT = new FoodComponent.Builder()

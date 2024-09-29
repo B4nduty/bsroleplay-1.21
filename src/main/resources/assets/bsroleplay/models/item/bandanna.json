@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bsroleplay:item/sandstorm_projectile"
+    "layer0": "bsroleplay:item/bandanna"
   }
 }

@@ -46,6 +46,16 @@ public class MobsLootTableModifier {
 
                     tableBuilder.pool(goldCoin.build());
                 }
+
+                if (EntityType.HUSK.getLootTableId().equals(key)) {
+                    LootPool.Builder desertCore = LootPool.builder()
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .conditionally(RandomChanceLootCondition.builder(0.1f))
+                            .with(ItemEntry.builder(ModItems.DESERT_CORE))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+
+                    tableBuilder.pool(desertCore.build());
+                }
             });
         }
 

@@ -3,9 +3,15 @@
   "itemgroup.bsroleplay.bsroleplay_block": "BsRoleplay Block",
   "itemgroup.bsroleplay.bsroleplay_armor": "BsRoleplay Armor",
 
-  "item.bsroleplay.pirate_helmet": "Tricornio",
-  "item.bsroleplay.pirate_chestplate": "Vestimenta de Pirata",
-  "item.bsroleplay.pirate_leggings": "Pantalones Pirata",
+  "item.bsroleplay.cocked_hat": "Sombrero de Candil",
+  "item.bsroleplay.bicorne": "Bicornio",
+  "item.bsroleplay.pirate_chestplate": "Ropa Pirata",
+  "item.bsroleplay.pirate_leggings": "Pantalones Piratas",
+  "item.bsroleplay.pirate_boots": "Botas Piratas",
+  "item.bsroleplay.bandanna": "Pañuelo",
+  "item.bsroleplay.buccaneer_chestplate": "Ropa Bucanero",
+  "item.bsroleplay.buccaneer_leggings": "Pantalones Bucanero",
+  "item.bsroleplay.buccaneer_boots": "Botas de Bucanero",
 
   "item.bsroleplay.crown": "Corona",
   "item.bsroleplay.mini_crown": "Corona Chiquita",
@@ -30,9 +36,12 @@
   "item.bsroleplay.police_boots": "Zapatos Policiales",
 
   "item.bsroleplay.dune_caller": "Susurrador del Desierto",
+  "item.bsroleplay.desert_core": "Núcleo del Desierto",
   "tooltip.bsroleplay.dune_caller.tooltip": "Clic Derecho para invocar una Tormenta de Arena",
 
   "item.bsroleplay.halo": "Aureola",
+
+  "item.bsroleplay.medicbag": "Botiquín",
 
   "item.bsroleplay.neanderthal_chestplate": "Ropa de Cuero",
 
@@ -71,7 +80,9 @@
   "block.bsroleplay.netherite_coin_stack": "Pila de Monedas de Netherita",
 
   "block.bsroleplay.shop": "Tienda",
-  "block.bsroleplay.creative_shop": "Tienda Infinita",
+  "block.bsroleplay.creative_shop": "Tienda del Creativo",
+
+  "block.bsroleplay.strongbox": "Caja Fuerte",
 
   "item.bsroleplay.lawyer_blackblue_chestplate": "Traje Negro y Azul",
   "item.bsroleplay.lawyer_blackgold_chestplate": "Traje Negro y Oro",

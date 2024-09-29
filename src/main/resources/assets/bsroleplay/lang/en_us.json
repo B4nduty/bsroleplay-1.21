@@ -3,9 +3,15 @@
   "itemgroup.bsroleplay.bsroleplay_block": "BsRoleplay Block",
   "itemgroup.bsroleplay.bsroleplay_armor": "BsRoleplay Armor",
 
-  "item.bsroleplay.pirate_helmet": "Tricorn",
+  "item.bsroleplay.cocked_hat": "Cocked Hat",
+  "item.bsroleplay.bicorne": "Bicorne",
   "item.bsroleplay.pirate_chestplate": "Pirate Clothing",
   "item.bsroleplay.pirate_leggings": "Pirate Pants",
+  "item.bsroleplay.pirate_boots": "Pirate Boots",
+  "item.bsroleplay.bandanna": "Bandanna",
+  "item.bsroleplay.buccaneer_chestplate": "Buccaneer Clothing",
+  "item.bsroleplay.buccaneer_leggings": "Buccaneer Pants",
+  "item.bsroleplay.buccaneer_boots": "Buccaneer Boots",
 
   "item.bsroleplay.crown": "Crown",
   "item.bsroleplay.mini_crown": "Mini Crown",
@@ -30,9 +36,12 @@
   "item.bsroleplay.police_boots": "Police Boots",
 
   "item.bsroleplay.dune_caller": "Desert's Wrath",
+  "item.bsroleplay.desert_core": "Desert Core",
   "tooltip.bsroleplay.dune_caller.tooltip": "When Right Click invoke a Sandstorm",
 
   "item.bsroleplay.halo": "Halo",
+
+  "item.bsroleplay.medicbag": "Medic Bag",
 
   "item.bsroleplay.neanderthal_chestplate": "Leather Clothes",
 
@@ -72,6 +81,8 @@
 
   "block.bsroleplay.shop": "Shop",
   "block.bsroleplay.creative_shop": "Creative Shop",
+
+  "block.bsroleplay.strongbox": "Strongbox",
 
   "item.bsroleplay.lawyer_blackblue_chestplate": "Black and Blue Suit",
   "item.bsroleplay.lawyer_blackgold_chestplate": "Black and Gold Suit",

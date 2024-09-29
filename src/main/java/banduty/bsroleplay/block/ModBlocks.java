@@ -1,9 +1,7 @@
 package banduty.bsroleplay.block;
 
 import banduty.bsroleplay.BsRolePlay;
-import banduty.bsroleplay.block.custom.CreativeShop;
-import banduty.bsroleplay.block.custom.Shop;
-import banduty.bsroleplay.block.custom.TinyBanduty;
+import banduty.bsroleplay.block.custom.*;
 import banduty.bsroleplay.block.custom.coins.CoinBlock;
 import banduty.bsroleplay.block.custom.coins.CoinStackBlock;
 import net.minecraft.block.AbstractBlock;
@@ -47,6 +45,9 @@ public class ModBlocks {
 
     public static final Block NETHERITE_COIN_STACK = Registry.register(Registries.BLOCK, BsRolePlay.identifierOf("netherite_coin_stack"),
             new CoinStackBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL).strength(80.0F, 8.0F).nonOpaque()));
+
+    public static final Block STRONGBOX = Registry.register(Registries.BLOCK, BsRolePlay.identifierOf("strongbox"),
+            new Strongbox(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL).strength(80.0F, 8.0F).nonOpaque()));
 
     public static void registerModBlocks() {
         BsRolePlay.LOGGER.info("Registering ModBlocks for " + BsRolePlay.MOD_ID);

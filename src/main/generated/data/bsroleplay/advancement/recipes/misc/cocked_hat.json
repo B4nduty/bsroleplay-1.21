@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pirate_helmet"
+        "recipe": "minecraft:cocked_hat"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -48,7 +48,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pirate_helmet"
+      "minecraft:cocked_hat"
     ]
   }
 }

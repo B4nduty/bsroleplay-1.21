@@ -1,7 +1,7 @@
 
 package banduty.bsroleplay.screen.wallet;
 
-import banduty.bsroleplay.BsRolePlayClient;
+import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.item.ModItems;
 import banduty.bsroleplay.item.custom.blocks.currency.CoinItem;
 import banduty.bsroleplay.item.custom.item.WalletItem;
@@ -29,7 +29,7 @@ public class WalletScreenHandler extends ScreenHandler {
     public WalletScreenHandler(int syncId, PlayerInventory playerInventory, ItemStack walletStack) {
         super(ModScreenHandlers.WALLET_SCREEN_HANDLER, syncId);
         this.walletStack = walletStack;
-        this.color = DyedColorComponent.getColor(walletStack, BsRolePlayClient.getColor(10511680));
+        this.color = DyedColorComponent.getColor(walletStack, BsRolePlay.getColor(10511680));
 
         this.addSlot(new Slot(this.inputInventory, 0, 44, 46) {
             @Override

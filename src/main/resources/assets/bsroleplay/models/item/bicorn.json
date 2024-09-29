@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bsroleplay:item/bicorn",
+    "layer1": "bsroleplay:item/bicorn_overlay"
+  }
+}

@@ -3,20 +3,13 @@ package banduty.bsroleplay.item;
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.ModBlocks;
 import banduty.bsroleplay.item.custom.armor.*;
-import banduty.bsroleplay.item.custom.blocks.ShopItem;
-import banduty.bsroleplay.item.custom.blocks.TinyBandutyItem;
-import banduty.bsroleplay.item.custom.blocks.currency.CoinItem;
-import banduty.bsroleplay.item.custom.blocks.currency.CoinStackItem;
+import banduty.bsroleplay.item.custom.blocks.*;
+import banduty.bsroleplay.item.custom.blocks.currency.*;
 import banduty.bsroleplay.item.custom.item.*;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.annotation.Nullable;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.item.*;
+import net.minecraft.registry.*;
 import net.minecraft.util.Rarity;
 
 import java.util.List;
@@ -30,6 +23,8 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.HEALKIT).maxCount(3).rarity(Rarity.UNCOMMON)), List.of(ModItemGroups.ITEMS));
     public static final Item INVKIT = registerItem("invkit",
             new InvKit(new Item.Settings().maxCount(3).rarity(Rarity.UNCOMMON)), List.of(ModItemGroups.ITEMS));
+    public static final Item MEDICBAG = registerItem("medicbag",
+            new MedicBag(new Item.Settings().maxCount(1).maxDamage(3)), List.of(ModItemGroups.ITEMS));
     public static final Item WALLET = registerItem("wallet",
             new WalletItem(new Item.Settings().maxCount(1)), List.of(ModItemGroups.ITEMS));
     public static final Item BRIEFCASE = registerItem("briefcase",
@@ -52,7 +47,7 @@ public class ModItems {
             new PoseidonTalon(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)), List.of(ModItemGroups.ITEMS));
     public static final Item DUNE_CALLER = registerItem("dune_caller",
             new DuneCaller(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)), List.of(ModItemGroups.ITEMS));
-    public static final Item SANDSTORM_PROJECTILE = registerItem("sandstorm_projectile",
+    public static final Item DESERT_CORE = registerItem("desert_core",
             new Item(new Item.Settings()), List.of(ModItemGroups.ITEMS));
     public static final Item SPECTRAL_SCANNER = registerItem("spectral_scanner",
             new SpectralScanner(new Item.Settings().maxCount(1).maxDamage(8)), List.of(ModItemGroups.ITEMS));
@@ -99,7 +94,10 @@ public class ModItems {
     public static final Item LAWYER_BOOTS_PURPLE = registerItem("lawyer_boots_purple",
             new GenericArmorItem(ModArmorMaterials.MASK, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(1))), List.of(ModItemGroups.ARMOR));
-    public static final Item PIRATE_HELMET = registerItem("pirate_helmet",
+    public static final Item COCKED_HAT = registerItem("cocked_hat",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item BICORNE = registerItem("bicorne",
             new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.HELMET, new Item.Settings()
                     .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
     public static final Item PIRATE_CHESTPLATE = registerItem("pirate_chestplate",
@@ -108,6 +106,21 @@ public class ModItems {
     public static final Item PIRATE_LEGGINGS = registerItem("pirate_leggings",
             new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.LEGGINGS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item PIRATE_BOOTS = registerItem("pirate_boots",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item BANDANNA = registerItem("bandanna",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item BUCCANEER_CHESTPLATE = registerItem("buccaneer_chestplate",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item BUCCANEER_LEGGINGS = registerItem("buccaneer_leggings",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
+    public static final Item BUCCANEER_BOOTS = registerItem("buccaneer_boots",
+            new PirateArmorItem(ModArmorMaterials.PIRATE, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(7))), List.of(ModItemGroups.ARMOR));
     public static final Item COWBOY_HAT = registerItem("cowboy_hat",
             new CowboyArmorItem(ModArmorMaterials.COWBOY, ArmorItem.Type.HELMET, new Item.Settings()
                     .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(3))), List.of(ModItemGroups.ARMOR));
@@ -182,6 +195,8 @@ public class ModItems {
             new ShopItem(ModBlocks.SHOP, new Item.Settings()), List.of(ModItemGroups.BLOCKS));
     public static final Item CREATIVE_SHOP = registerItem("creative_shop",
             new ShopItem(ModBlocks.CREATIVE_SHOP, new Item.Settings().rarity(Rarity.EPIC)), List.of(ModItemGroups.BLOCKS));
+    public static final Item STRONGBOX = registerItem("strongbox",
+            new StrongboxItem(ModBlocks.STRONGBOX, new Item.Settings()), List.of(ModItemGroups.BLOCKS));
 
     private static <T extends Item> T registerItem(String name, T item, @Nullable List<RegistryKey<ItemGroup>> itemGroups) {
         Registry.register(Registries.ITEM, BsRolePlay.identifierOf(name), item);

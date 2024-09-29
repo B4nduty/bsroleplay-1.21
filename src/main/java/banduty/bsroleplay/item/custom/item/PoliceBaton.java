@@ -32,8 +32,6 @@ import java.util.function.Consumer;
 public class PoliceBaton extends Item implements GeoItem {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
-    public static final String COORDS = "coords";
-
     public PoliceBaton(Settings settings) {
         super(settings);
     }

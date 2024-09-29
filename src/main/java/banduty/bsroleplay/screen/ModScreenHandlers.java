@@ -1,11 +1,13 @@
 package banduty.bsroleplay.screen;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.block.entity.StrongboxBlockEntity;
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
 import banduty.bsroleplay.block.entity.shops.ShopBlockEntity;
 import banduty.bsroleplay.item.custom.item.WalletItem;
 import banduty.bsroleplay.screen.creative_shop.CreativeShopScreenHandler;
 import banduty.bsroleplay.screen.shop.ShopScreenHandler;
+import banduty.bsroleplay.screen.strongbox.StrongboxScreenHandler;
 import banduty.bsroleplay.screen.wallet.WalletScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
@@ -30,6 +32,12 @@ public class ModScreenHandlers {
             registerExtended("creative_shop_gui", new ExtendedScreenHandlerType<>(
                     CreativeShopScreenHandler::new,
                     CreativeShopBlockEntity.Data.CODEC
+            ));
+
+    public static final ScreenHandlerType<StrongboxScreenHandler> STRONGBOX_SCREEN_HANDLER =
+            registerExtended("strongbox_gui", new ExtendedScreenHandlerType<>(
+                    StrongboxScreenHandler::new,
+                    StrongboxBlockEntity.Data.CODEC
             ));
 
     private static <T extends ScreenHandler> ScreenHandlerType<T> registerExtended(String name, ScreenHandlerType<T> screenHandlerType) {

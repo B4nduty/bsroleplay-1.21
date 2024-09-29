@@ -1,9 +1,15 @@
 {
   "values": [
     "bsroleplay:wallet",
-    "bsroleplay:pirate_helmet",
+    "bsroleplay:cocked_hat",
+    "bsroleplay:bicorne",
     "bsroleplay:pirate_chestplate",
     "bsroleplay:pirate_leggings",
+    "bsroleplay:pirate_boots",
+    "bsroleplay:bandanna",
+    "bsroleplay:buccaneer_chestplate",
+    "bsroleplay:buccaneer_leggings",
+    "bsroleplay:buccaneer_boots",
     "bsroleplay:protection_helmet",
     "bsroleplay:protection_chestplate",
     "bsroleplay:protection_leggings",
