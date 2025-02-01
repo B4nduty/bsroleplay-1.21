@@ -225,5 +225,9 @@
 
 
   "effect.bsroleplay.sandstorm": "Tormenta de Arena",
-  "effect.bsroleplay.tidal_surge": "Marejada"
+  "effect.bsroleplay.tidal_surge": "Marejada",
+
+  "tag.item.bsroleplay.autocollect": "Autocolectar",
+
+  "enchantment.bsroleplay.autocollect": "Autocolectar"
 }

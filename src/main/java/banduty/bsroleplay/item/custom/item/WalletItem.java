@@ -53,6 +53,16 @@ public class WalletItem extends Item {
         super.appendTooltip(stack, context, tooltip, type);
     }
 
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantability() {
+        return 2;
+    }
+
     public static int getCurrencyFromNbt(ItemStack walletItemStack) {
         if (walletItemStack.getComponents().get(ModDataComponents.MONEY) != null) {
             return walletItemStack.getComponents().get(ModDataComponents.MONEY);

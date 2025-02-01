@@ -21,6 +21,8 @@ import banduty.bsroleplay.config.ModConfigs;
 import banduty.bsroleplay.datacomponents.ModDataComponents;
 import banduty.bsroleplay.datagen.*;
 import banduty.bsroleplay.effect.ModEffects;
+import banduty.bsroleplay.enchantment.ModEnchantmentEffects;
+import banduty.bsroleplay.enchantment.ModEnchantments;
 import banduty.bsroleplay.entity.ModEntities;
 import banduty.bsroleplay.event.KeyInputHandler;
 import banduty.bsroleplay.event.PlayerTickHandler;
@@ -55,6 +57,8 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.component.type.DyedColorComponent;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,6 +96,8 @@ public class BsRolePlay implements ModInitializer, ClientModInitializer, DataGen
 		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 
 		ModEffects.registerEffects();
+
+		ModEnchantmentEffects.registerEnchantmentEffects();
 
 		ModDataComponents.register();
 	}
@@ -177,6 +183,12 @@ public class BsRolePlay implements ModInitializer, ClientModInitializer, DataGen
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
+		pack.addProvider(ModRegistryDataGenerator::new);
+	}
+
+	@Override
+	public void buildRegistry(RegistryBuilder registryBuilder) {
+		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, ModEnchantments::bootstrap);
 	}
 
 	public static Identifier identifierOf(String name) {

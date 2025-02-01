@@ -227,5 +227,9 @@
 
 
   "effect.bsroleplay.sandstorm": "Sandstorm",
-  "effect.bsroleplay.tidal_surge": "Tidal Surge"
+  "effect.bsroleplay.tidal_surge": "Tidal Surge",
+
+  "tag.item.bsroleplay.autocollect": "Autocollect",
+
+  "enchantment.bsroleplay.autocollect": "Autocollect"
 }

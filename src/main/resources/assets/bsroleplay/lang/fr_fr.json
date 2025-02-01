@@ -225,5 +225,9 @@
 
 
   "effect.bsroleplay.sandstorm": "Tempête de Sable",
-  "effect.bsroleplay.tidal_surge": "Onde de Marée"
+  "effect.bsroleplay.tidal_surge": "Onde de Marée",
+
+  "tag.item.bsroleplay.autocollect": "Autocollect",
+
+  "enchantment.bsroleplay.autocollect": "Autocollect"
 }

@@ -26,7 +26,7 @@ public class ModItems {
     public static final Item MEDICBAG = registerItem("medicbag",
             new MedicBag(new Item.Settings().maxCount(1).maxDamage(3)), List.of(ModItemGroups.ITEMS));
     public static final Item WALLET = registerItem("wallet",
-            new WalletItem(new Item.Settings().maxCount(1)), List.of(ModItemGroups.ITEMS));
+            new WalletItem(new Item.Settings().maxCount(1).maxDamage(1)), List.of(ModItemGroups.ITEMS));
     public static final Item BRIEFCASE = registerItem("briefcase",
             new BriefCase(new Item.Settings().maxCount(1)), List.of(ModItemGroups.ITEMS));
     public static final Item BLACK_BRIEFCASE = registerItem("black_briefcase",

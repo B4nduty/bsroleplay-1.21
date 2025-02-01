@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.bsroleplay.autocollect"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "bsroleplay:autocollect"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#minecraft:in_enchanting_table",
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 9
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 7
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#bsroleplay:wallet",
+  "weight": 1
+}

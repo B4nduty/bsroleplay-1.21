@@ -1,6 +1,7 @@
 package banduty.bsroleplay.datagen;
 
 import banduty.bsroleplay.item.ModItems;
+import banduty.bsroleplay.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -31,5 +32,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PROTECTION_LEGGINGS)
                 .add(ModItems.PROTECTION_BOOTS)
                 .add(ModItems.GADGET_HAT);
+
+        getOrCreateTagBuilder(ModTags.WALLET)
+                .add(ModItems.WALLET);
     }
 }
