@@ -27,6 +27,7 @@ public class HandcuffsKey extends Item {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        World world = user.getWorld();
         if (entity instanceof PlayerEntity playerTarget &&
                 ((IEntityDataSaver) playerTarget).bsroleplay$getPersistentData().getBoolean("handcuffed")) {
             if (!user.isCreative()) stack.decrement(1);
@@ -34,7 +35,6 @@ public class HandcuffsKey extends Item {
             playerTarget.removeStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS).getEffectType());
             playerTarget.removeStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST).getEffectType());
 
-            World world = user.getWorld();
             if (!world.isClient) {
                 ServerWorld serverWorld = (ServerWorld) user.getWorld();
                 BlockPos blockPos = user.getBlockPos();

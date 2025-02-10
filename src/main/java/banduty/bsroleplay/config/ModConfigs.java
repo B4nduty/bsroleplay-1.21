@@ -140,6 +140,19 @@ public class ModConfigs extends PartitioningSerializer.GlobalData {
             return Math.max(0, handcuffsWeaknessLevel);
         }
 
+        @ConfigEntry.Gui.Tooltip(count = 3)
+        @Comment("""
+                Handcuffs Chat | Default: 2
+                Level 0: Can write in chat
+                Level 1: Can't use commands, but write
+                Level 2: Can't use commands nor write
+                """)
+        int handcuffsChat = 2;
+
+        public int getHandcuffsChat() {
+            return Math.clamp(handcuffsChat, 0, 2);
+        }
+
         @ConfigEntry.Gui.Tooltip(count = 0)
         @Comment("Allow Endercuffs work as a Flint and Steel | Default: true")
         public boolean modifyEndercuffsFire = true;
