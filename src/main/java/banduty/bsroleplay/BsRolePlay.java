@@ -17,6 +17,7 @@ import banduty.bsroleplay.block.entity.client.shops.creative_shop.CreativeShopRe
 import banduty.bsroleplay.block.entity.client.shops.shop.ShopRenderer;
 import banduty.bsroleplay.client.GrayscaleOverlay;
 import banduty.bsroleplay.client.StaminaOverlay;
+import banduty.bsroleplay.commands.HandcuffedLootCommand;
 import banduty.bsroleplay.config.ModConfigs;
 import banduty.bsroleplay.datacomponents.ModDataComponents;
 import banduty.bsroleplay.datagen.*;
@@ -24,6 +25,7 @@ import banduty.bsroleplay.effect.ModEffects;
 import banduty.bsroleplay.enchantment.ModEnchantmentEffects;
 import banduty.bsroleplay.enchantment.ModEnchantments;
 import banduty.bsroleplay.entity.ModEntities;
+import banduty.bsroleplay.event.ClientTickHandler;
 import banduty.bsroleplay.event.KeyInputHandler;
 import banduty.bsroleplay.event.PlayerTickHandler;
 import banduty.bsroleplay.item.ModItemGroups;
@@ -51,6 +53,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -92,6 +95,8 @@ public class BsRolePlay implements ModInitializer, ClientModInitializer, DataGen
 		MobsLootTableModifier.modifyMobsLootTables();
 		BlocksLootTableModifier.modifyBlocksLootTables();
 		VillagerTradesModifier.modifyVillagerTrades();
+
+		CommandRegistrationCallback.EVENT.register(HandcuffedLootCommand::register);
 
 		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 
@@ -159,6 +164,8 @@ public class BsRolePlay implements ModInitializer, ClientModInitializer, DataGen
 		ModS2CNetworking.registerS2CNetworking();
 
 		EntityRendererRegistry.register(ModEntities.SANDSTORM_PROJECTILE, FlyingItemEntityRenderer::new);
+
+		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
 	}
 
 	public static int getAngle() {

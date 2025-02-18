@@ -1,7 +1,10 @@
 package banduty.bsroleplay.block;
 
 import banduty.bsroleplay.BsRolePlay;
-import banduty.bsroleplay.block.custom.*;
+import banduty.bsroleplay.block.custom.CreativeShop;
+import banduty.bsroleplay.block.custom.Shop;
+import banduty.bsroleplay.block.custom.Strongbox;
+import banduty.bsroleplay.block.custom.TinyBanduty;
 import banduty.bsroleplay.block.custom.coins.CoinBlock;
 import banduty.bsroleplay.block.custom.coins.CoinStackBlock;
 import net.minecraft.block.AbstractBlock;

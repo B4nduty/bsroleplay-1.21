@@ -4,12 +4,12 @@ package banduty.bsroleplay.item.custom.item;
 import banduty.bsroleplay.sound.ModSounds;
 import banduty.bsroleplay.util.Handcuffed;
 import banduty.bsroleplay.util.IEntityDataSaver;
+import banduty.bsroleplay.util.InventoryUtil;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Style;
@@ -31,18 +31,18 @@ public class HandcuffsKey extends Item {
         if (entity instanceof PlayerEntity playerTarget &&
                 ((IEntityDataSaver) playerTarget).bsroleplay$getPersistentData().getBoolean("handcuffed")) {
             if (!user.isCreative()) stack.decrement(1);
-            playerTarget.removeStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS).getEffectType());
-            playerTarget.removeStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS).getEffectType());
-            playerTarget.removeStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST).getEffectType());
 
             if (!world.isClient) {
+                InventoryUtil.loadInventoryFromFile(playerTarget);
                 ServerWorld serverWorld = (ServerWorld) user.getWorld();
                 BlockPos blockPos = user.getBlockPos();
                 serverWorld.playSound(null, blockPos, ModSounds.HANDCUFFEDNT, SoundCategory.PLAYERS, 1f, 1f);
                 playerTarget.sendMessage(Text.translatable("message.bsroleplay.handcuff_key.free_2").fillStyle(Style.EMPTY.withColor(Formatting.GREEN)), true);
                 user.sendMessage(Text.translatable("message.bsroleplay.handcuff_key.free_1", playerTarget.getName().getString()).fillStyle(Style.EMPTY), true);
             }
-            Handcuffed.setHandcuffed((IEntityDataSaver) playerTarget, false);
+            if (playerTarget instanceof ServerPlayerEntity serverPlayerEntity) {
+                Handcuffed.setHandcuffed(serverPlayerEntity, false);
+            }
 
             return ActionResult.SUCCESS;
         }

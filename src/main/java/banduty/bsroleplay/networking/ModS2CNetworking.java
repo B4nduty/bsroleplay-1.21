@@ -12,6 +12,7 @@ public class ModS2CNetworking {
         ClientPlayNetworking.registerGlobalReceiver(StaminaZeroS2CPacket.STAMINA_ZERO_ID, StaminaZeroS2CPacket::handlePacket);
         ClientPlayNetworking.registerGlobalReceiver(VelocityUpdateS2CPacket.VELOCITY_UPDATE_ID, VelocityUpdateS2CPacket::handlePacket);
         ClientPlayNetworking.registerGlobalReceiver(RegenStaminaS2CPacket.REGEN_STAMINA_ID, RegenStaminaS2CPacket::handlePacket);
+        ClientPlayNetworking.registerGlobalReceiver(HandcuffedS2CPacket.HANDCUFFED, HandcuffedS2CPacket::handlePacket);
     }
 
     public static void registerS2CNetworking() {

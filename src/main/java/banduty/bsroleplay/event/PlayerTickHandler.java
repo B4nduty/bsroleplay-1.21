@@ -38,6 +38,10 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick{
             if (playerEntity.age % ticksPerRecovery == 0 && stamina < totalStamina && regenStamina) {
                 StaminaData.addStamina(((IEntityDataSaver) playerEntity), Math.min(1, totalStamina - stamina));
             }
+
+            if (((IEntityDataSaver) playerEntity).bsroleplay$getPersistentData().getBoolean("handcuffed")) {
+                playerEntity.setVelocity(0, 0, 0);
+            }
         }
     }
 }

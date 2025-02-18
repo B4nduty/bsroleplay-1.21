@@ -54,7 +54,9 @@ public class Endercuffs extends Item {
             playerTarget.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST,
                     -1, 217, false, false, false));
 
-            Handcuffed.setHandcuffed(((IEntityDataSaver) playerTarget), true);
+            if (playerTarget instanceof ServerPlayerEntity serverPlayerEntity) {
+                Handcuffed.setHandcuffed(serverPlayerEntity, true);
+            }
 
             if (user.getWorld() instanceof ServerWorld serverWorld) {
                 BlockPos blockPos = user.getBlockPos();
