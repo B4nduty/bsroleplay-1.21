@@ -4,7 +4,6 @@ package banduty.bsroleplay.item.custom.item;
 import banduty.bsroleplay.sound.ModSounds;
 import banduty.bsroleplay.util.Handcuffed;
 import banduty.bsroleplay.util.IEntityDataSaver;
-import banduty.bsroleplay.util.InventoryUtil;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -36,7 +35,6 @@ public class HandCuffs extends Item {
             }
 
             if (user.getWorld() instanceof ServerWorld serverWorld) {
-                InventoryUtil.saveInventoryToFile(playerTarget);
                 BlockPos blockPos = user.getBlockPos();
                 serverWorld.playSound(null, blockPos, ModSounds.HANDCUFFED, SoundCategory.PLAYERS, 1f, 1f);
                 playerTarget.sendMessage(Text.translatable("message.bsroleplay.handcuff.handcuffed_2").fillStyle(Style.EMPTY.withColor(Formatting.RED)), true);

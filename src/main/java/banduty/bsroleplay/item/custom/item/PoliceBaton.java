@@ -18,6 +18,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
@@ -107,7 +109,15 @@ public class PoliceBaton extends Item implements GeoItem {
         if (((IEntityDataSaver) playerTarget).bsroleplay$getPersistentData().getBoolean("handcuffed") && !playerAttacker.getItemCooldownManager().isCoolingDown(this) &&
                 stack.getComponents().get(ModDataComponents.BLOCKPOS) != null) {
             BlockPos blockPos = PoliceBaton.readBlockPosFromNbt(stack);
-            if (blockPos != null) playerTarget.teleport(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), true);
+            if (blockPos != null) {
+                World world = playerTarget.getWorld();
+                ChunkPos chunkPos = new ChunkPos(blockPos);
+                world.getChunk(chunkPos.x, chunkPos.z);
+
+                if (world.isChunkLoaded(chunkPos.x, chunkPos.z)) {
+                    playerTarget.teleport(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), true);
+                }
+            }
             for (PlayerEntity players : attacker.getWorld().getPlayers()) {
                 players.sendMessage(Text.literal("§f" + playerTarget.getGameProfile().getName() + "§r" + " has been prisoned")
                         .fillStyle(Style.EMPTY.withColor(Formatting.RED)), true);

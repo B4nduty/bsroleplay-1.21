@@ -8,8 +8,6 @@ import banduty.bsroleplay.util.IEntityDataSaver;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -45,14 +43,6 @@ public class Endercuffs extends Item {
             if (playerTarget instanceof ServerPlayerEntity serverPlayerTarget) {
                 serverPlayerTarget.changeGameMode(serverPlayerTarget.isCreative() ? GameMode.SURVIVAL : GameMode.CREATIVE);
             }
-            playerTarget.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,
-                    -1, BsRolePlay.CONFIG.common.getHandcuffsSlownessLevel() - 1, false,
-                    false, false));
-            playerTarget.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,
-                    -1, BsRolePlay.CONFIG.common.getHandcuffsWeaknessLevel() - 1, false,
-                    false, false));
-            playerTarget.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST,
-                    -1, 217, false, false, false));
 
             if (playerTarget instanceof ServerPlayerEntity serverPlayerEntity) {
                 Handcuffed.setHandcuffed(serverPlayerEntity, true);
