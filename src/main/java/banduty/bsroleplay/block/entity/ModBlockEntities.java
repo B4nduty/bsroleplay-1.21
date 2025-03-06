@@ -2,10 +2,7 @@ package banduty.bsroleplay.block.entity;
 
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.ModBlocks;
-import banduty.bsroleplay.block.entity.coins.AmethystCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.CopperCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.GoldCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.NetheriteCoinBlockEntity;
+import banduty.bsroleplay.block.entity.coins.*;
 import banduty.bsroleplay.block.entity.coins.stack.AmethystCoinStackBlockEntity;
 import banduty.bsroleplay.block.entity.coins.stack.CopperCoinStackBlockEntity;
 import banduty.bsroleplay.block.entity.coins.stack.GoldCoinStackBlockEntity;
@@ -54,6 +51,11 @@ public class ModBlockEntities {
             BsRolePlay.identifierOf("netherite_coin_block_entity"),
             BlockEntityType.Builder.create(NetheriteCoinBlockEntity::new,
                     ModBlocks.NETHERITE_COIN).build());
+
+    public static final BlockEntityType<CreativeCoinBlockEntity> CREATIVE_COIN_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+            BsRolePlay.identifierOf("netherite_coin_block_entity"),
+            BlockEntityType.Builder.create(CreativeCoinBlockEntity::new,
+                    ModBlocks.CREATIVE_COIN).build());
 
     public static final BlockEntityType<CopperCoinStackBlockEntity> COPPER_COIN_STACK_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             BsRolePlay.identifierOf("copper_coin_stack_block_entity"),

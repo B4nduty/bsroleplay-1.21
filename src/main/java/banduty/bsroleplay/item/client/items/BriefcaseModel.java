@@ -23,6 +23,6 @@ public class BriefcaseModel extends GeoModel<BriefCase> {
 
     @Override
     public Identifier getAnimationResource(BriefCase animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

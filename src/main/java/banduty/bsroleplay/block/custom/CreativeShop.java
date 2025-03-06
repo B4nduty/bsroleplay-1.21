@@ -2,6 +2,7 @@ package banduty.bsroleplay.block.custom;
 
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
 import banduty.bsroleplay.item.ModItems;
+import banduty.bsroleplay.item.custom.blocks.currency.CoinItem;
 import banduty.bsroleplay.item.custom.item.WalletItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -115,6 +116,11 @@ public class CreativeShop extends BlockWithEntity implements BlockEntityProvider
             player.sendMessage(Text.translatable("bsroleplay.shop.no_item_sell").formatted(Formatting.RED), true);
             return ActionResult.PASS;
         }
+        if (mainHandStack.getItem() instanceof CoinItem coinItem && coinItem.currencyValue < 0) {
+            player.getInventory().insertStack(sellStack.copyWithCount(1));
+            if (!player.isCreative()) mainHandStack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
         if (mainHandStack.getItem() != ModItems.WALLET) {
             player.sendMessage(Text.translatable("bsroleplay.shop.wallet_need").formatted(Formatting.RED), true);
             return ActionResult.PASS;
@@ -123,7 +129,7 @@ public class CreativeShop extends BlockWithEntity implements BlockEntityProvider
             player.sendMessage(Text.translatable("bsroleplay.shop.no_money").formatted(Formatting.RED), true);
             return ActionResult.PASS;
         }
-        WalletItem.writeCurrencyToNbt(mainHandStack,
+        if (!player.isCreative()) WalletItem.writeCurrencyToNbt(mainHandStack,
                 WalletItem.getCurrencyFromNbt(mainHandStack) - creativeShopBlockEntity.getCurrencyCounter());
         player.getInventory().insertStack(sellStack.copyWithCount(1));
         return ActionResult.SUCCESS;

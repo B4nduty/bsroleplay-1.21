@@ -18,6 +18,6 @@ public class TinyBandutyModel extends GeoModel<TinyBandutyBlockEntity> {
 
     @Override
     public Identifier getAnimationResource(TinyBandutyBlockEntity animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

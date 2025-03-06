@@ -18,6 +18,6 @@ public class AmethystCoinModel extends GeoModel<AmethystCoinBlockEntity> {
 
     @Override
     public Identifier getAnimationResource(AmethystCoinBlockEntity animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

@@ -37,6 +37,9 @@ public class ModBlocks {
     public static final Block NETHERITE_COIN = Registry.register(Registries.BLOCK, BsRolePlay.identifierOf("netherite_coin"),
             new CoinBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL).strength(50.0F, 1200.0F).nonOpaque()));
 
+    public static final Block CREATIVE_COIN = Registry.register(Registries.BLOCK, BsRolePlay.identifierOf("creative_coin"),
+            new CoinBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL).strength(50.0F, 1200.0F).nonOpaque()));
+
     public static final Block COPPER_COIN_STACK = Registry.register(Registries.BLOCK, BsRolePlay.identifierOf("copper_coin_stack"),
             new CoinStackBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.METAL).strength(5.0F, 6.0F).nonOpaque()));
 

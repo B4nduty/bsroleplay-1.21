@@ -64,6 +64,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GOLD_COIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_COIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.NETHERITE_COIN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CREATIVE_COIN, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.COPPER_COIN_STACK, Models.GENERATED);
         itemModelGenerator.register(ModItems.GOLD_COIN_STACK, Models.GENERATED);

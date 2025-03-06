@@ -18,6 +18,6 @@ public class CopperCoinStackModel extends GeoModel<CopperCoinStackBlockEntity> {
 
     @Override
     public Identifier getAnimationResource(CopperCoinStackBlockEntity animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

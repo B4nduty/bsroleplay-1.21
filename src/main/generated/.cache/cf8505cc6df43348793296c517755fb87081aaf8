@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-01T01:01:42.4824878	BsRolePlay/Model Definitions
+// 1.21.1	2025-03-05T01:35:00.095767	BsRolePlay/Model Definitions
 a852149e0f365e99de72f244ee79130c64a555ec assets\bsroleplay\models\item\halo.json
 e9a226fef62cf8c5159d304d3fa12e1914e81b24 assets\bsroleplay\models\item\dream_mask.json
 466079be3ee933f6917e5d589dac9c72d60cc263 assets\bsroleplay\models\item\gold_coin.json
@@ -9,12 +9,13 @@ e9a226fef62cf8c5159d304d3fa12e1914e81b24 assets\bsroleplay\models\item\dream_mas
 bdb5621e348f402bb8aa5b226108beed060bfeb8 assets\bsroleplay\models\item\spectral_scanner.json
 efd2a3edfa4d3a73b02fa696f26d9bea5d37e4aa assets\bsroleplay\models\item\handcuffs_key.json
 3a9753935a0fd466ff77789292b965b1158229a1 assets\bsroleplay\models\item\roman_toga.json
-429fa43ae804c25b2aee7f04afe415d96d0d21d7 assets\bsroleplay\models\item\medicbag.json
 de7e6a34dfc87d49a5a5c189346e10149aadb352 assets\bsroleplay\models\item\police_leggings.json
+429fa43ae804c25b2aee7f04afe415d96d0d21d7 assets\bsroleplay\models\item\medicbag.json
 9e23d944465a342be70b588019ca51208d53b465 assets\bsroleplay\models\item\dune_caller.json
 f58068b0f4bc018ea6985bfeaf2711fd2796bc27 assets\bsroleplay\models\item\lawyer_boots_purple.json
 5cfb8ca346b4c3f0394aadb3b6da7a1e09ad46be assets\bsroleplay\models\item\lawyer_leggings_black.json
 b70748f2f7d5a524714a061661f96ab591797bcc assets\bsroleplay\models\item\amethyst_coin.json
+5608ae236f3d23d6be305e5eddabaad132b99132 assets\bsroleplay\models\item\creative_coin.json
 6849e37ac445f69c8aef0448cce5d7716bcb46c2 assets\bsroleplay\models\item\funeral_mask.json
 c1fed0545dc2dd265526c4b8d7ef11a5bf8ea6c7 assets\bsroleplay\models\item\bunny_mask.json
 8d89f04274ef52d518357c8feda216e2987cd015 assets\bsroleplay\models\item\lawyer_blackred_chestplate.json

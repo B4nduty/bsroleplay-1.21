@@ -53,6 +53,6 @@ public class GenericArmorModel extends GeoModel<GenericArmorItem> {
 
     @Override
     public Identifier getAnimationResource(GenericArmorItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

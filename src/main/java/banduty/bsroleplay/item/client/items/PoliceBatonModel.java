@@ -19,6 +19,6 @@ public class PoliceBatonModel extends GeoModel<PoliceBaton> {
 
     @Override
     public Identifier getAnimationResource(PoliceBaton animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

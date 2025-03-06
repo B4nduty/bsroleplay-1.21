@@ -18,6 +18,6 @@ public class NetheriteCoinModel extends GeoModel<NetheriteCoinBlockEntity> {
 
     @Override
     public Identifier getAnimationResource(NetheriteCoinBlockEntity animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

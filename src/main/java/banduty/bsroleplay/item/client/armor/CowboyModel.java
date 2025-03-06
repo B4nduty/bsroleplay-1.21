@@ -19,6 +19,6 @@ public class CowboyModel extends GeoModel<CowboyArmorItem> {
 
     @Override
     public Identifier getAnimationResource(CowboyArmorItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

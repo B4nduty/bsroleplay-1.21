@@ -191,6 +191,8 @@ public class ModItems {
             new CoinItem(ModBlocks.AMETHYST_COIN, 100, new Item.Settings().rarity(Rarity.RARE)), List.of(ModItemGroups.BLOCKS));
     public static final Item NETHERITE_COIN = registerItem("netherite_coin",
             new CoinItem(ModBlocks.NETHERITE_COIN, 1000, new Item.Settings().rarity(Rarity.EPIC)), List.of(ModItemGroups.BLOCKS));
+    public static final Item CREATIVE_COIN = registerItem("creative_coin",
+            new CoinItem(ModBlocks.CREATIVE_COIN, -1, new Item.Settings().rarity(Rarity.EPIC)), List.of(ModItemGroups.BLOCKS));
     public static final Item COPPER_COIN_STACK = registerItem("copper_coin_stack",
             new CoinStackItem(ModBlocks.COPPER_COIN_STACK, 9, new Item.Settings()), List.of(ModItemGroups.BLOCKS));
     public static final Item GOLD_COIN_STACK = registerItem("gold_coin_stack",

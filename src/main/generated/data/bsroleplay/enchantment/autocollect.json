@@ -14,17 +14,18 @@
   },
   "exclusive_set": "#minecraft:in_enchanting_table",
   "max_cost": {
-    "base": 25,
-    "per_level_above_first": 9
+    "base": 9,
+    "per_level_above_first": 7
   },
   "max_level": 4,
   "min_cost": {
-    "base": 5,
-    "per_level_above_first": 7
+    "base": 2,
+    "per_level_above_first": 5
   },
+  "primary_items": "#bsroleplay:wallet",
   "slots": [
     "mainhand"
   ],
   "supported_items": "#bsroleplay:wallet",
-  "weight": 1
+  "weight": 25
 }

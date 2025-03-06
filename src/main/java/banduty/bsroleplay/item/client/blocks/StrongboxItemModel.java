@@ -18,6 +18,6 @@ public class StrongboxItemModel extends GeoModel<StrongboxItem> {
 
     @Override
     public Identifier getAnimationResource(StrongboxItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

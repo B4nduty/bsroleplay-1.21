@@ -19,6 +19,6 @@ public class ProtectionClothingModel extends GeoModel<ProtectionClothingItem> {
 
     @Override
     public Identifier getAnimationResource(ProtectionClothingItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

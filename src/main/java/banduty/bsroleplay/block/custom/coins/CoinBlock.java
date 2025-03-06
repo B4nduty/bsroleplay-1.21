@@ -2,10 +2,7 @@
 package banduty.bsroleplay.block.custom.coins;
 
 import banduty.bsroleplay.block.ModBlocks;
-import banduty.bsroleplay.block.entity.coins.AmethystCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.CopperCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.GoldCoinBlockEntity;
-import banduty.bsroleplay.block.entity.coins.NetheriteCoinBlockEntity;
+import banduty.bsroleplay.block.entity.coins.*;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -68,6 +65,7 @@ public class CoinBlock extends BlockWithEntity {
         if (state.getBlock() == ModBlocks.GOLD_COIN) return new GoldCoinBlockEntity(pos, state);
         if (state.getBlock() == ModBlocks.AMETHYST_COIN) return new AmethystCoinBlockEntity(pos, state);
         if (state.getBlock() == ModBlocks.NETHERITE_COIN) return new NetheriteCoinBlockEntity(pos, state);
+        if (state.getBlock() == ModBlocks.CREATIVE_COIN) return new CreativeCoinBlockEntity(pos, state);
         return new CopperCoinBlockEntity(pos, state);
     }
 

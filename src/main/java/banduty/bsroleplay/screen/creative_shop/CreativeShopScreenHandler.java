@@ -1,7 +1,6 @@
 
 package banduty.bsroleplay.screen.creative_shop;
 
-import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
 import banduty.bsroleplay.screen.ModScreenHandlers;
 import net.minecraft.block.entity.BlockEntity;
@@ -50,8 +49,7 @@ public class CreativeShopScreenHandler extends ScreenHandler {
 
     public void increaseCurrencyCounter(int increaseAmount) {
         int currentValue = this.propertyDelegate.get(0);
-        int maxCoins = BsRolePlay.CONFIG.currency.getWalletMaxCoins();
-        if (currentValue + increaseAmount <= maxCoins) {
+        if (currentValue + increaseAmount <= 32000) {
             this.blockEntity.setCurrencyCounter(currentValue + increaseAmount);
             this.propertyDelegate.set(0, currentValue + increaseAmount);
         }

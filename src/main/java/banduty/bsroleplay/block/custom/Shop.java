@@ -2,6 +2,7 @@ package banduty.bsroleplay.block.custom;
 
 import banduty.bsroleplay.block.entity.shops.ShopBlockEntity;
 import banduty.bsroleplay.item.ModItems;
+import banduty.bsroleplay.item.custom.blocks.currency.CoinItem;
 import banduty.bsroleplay.item.custom.item.WalletItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -24,7 +25,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class Shop extends BlockWithEntity implements BlockEntityProvider {
@@ -119,6 +119,15 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
             player.sendMessage(Text.translatable("bsroleplay.shop.no_item_sell").formatted(Formatting.RED), true);
             return ActionResult.PASS;
         }
+        if (mainHandStack.getItem() instanceof CoinItem coinItem && coinItem.currencyValue < 0) {
+            shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
+            player.getInventory().insertStack(sellStack.copyWithCount(1));
+            shopBlockEntity.reduceSellStack(1);
+            if (!player.isCreative()) mainHandStack.decrement(1);
+            if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
+                    .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
+            return ActionResult.SUCCESS;
+        }
         if (mainHandStack.getItem() != ModItems.WALLET) {
             player.sendMessage(Text.translatable("bsroleplay.shop.wallet_need").formatted(Formatting.RED), true);
             return ActionResult.PASS;
@@ -131,12 +140,12 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
             player.sendMessage(Text.translatable("bsroleplay.shop.no_money").formatted(Formatting.RED), true);
             return ActionResult.PASS;
         }
-        WalletItem.writeCurrencyToNbt(mainHandStack,
+        if (!player.isCreative()) WalletItem.writeCurrencyToNbt(mainHandStack,
                 WalletItem.getCurrencyFromNbt(mainHandStack) - shopBlockEntity.getCurrencyCounter());
         shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
         player.getInventory().insertStack(sellStack.copyWithCount(1));
         shopBlockEntity.reduceSellStack(1);
-        Objects.requireNonNull(world.getPlayerByUuid(shopBlockEntity.getOwner()))
+        if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
                 .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
         return ActionResult.SUCCESS;
     }

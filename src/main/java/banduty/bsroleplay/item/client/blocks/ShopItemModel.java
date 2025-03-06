@@ -21,6 +21,6 @@ public class ShopItemModel extends GeoModel<ShopItem> {
 
     @Override
     public Identifier getAnimationResource(ShopItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }

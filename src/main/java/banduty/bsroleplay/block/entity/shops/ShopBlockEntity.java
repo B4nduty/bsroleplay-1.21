@@ -1,5 +1,6 @@
 
 package banduty.bsroleplay.block.entity.shops;
+
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.entity.ModBlockEntities;
 import banduty.bsroleplay.screen.shop.ShopScreenHandler;
@@ -29,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.RenderUtil;
 
 import java.util.UUID;
@@ -74,12 +75,7 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this,"controller", 0, this::predicate));
-    }
 
-    private PlayState predicate(AnimationState<ShopBlockEntity> animationState) {
-        animationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-        return PlayState.STOP;
     }
 
     @Override

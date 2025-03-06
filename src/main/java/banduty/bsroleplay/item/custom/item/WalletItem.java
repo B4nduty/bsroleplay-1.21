@@ -101,7 +101,7 @@ public class WalletItem extends Item {
 
     @Override
     public boolean onStackClicked(ItemStack walletStack, Slot slot, ClickType clickType, PlayerEntity player) {
-        if (clickType != ClickType.RIGHT) {
+        if (clickType != ClickType.RIGHT || WalletItem.getCurrencyFromNbt(walletStack) <= 0) {
             return false;
         }
         ItemStack otherStack = slot.getStack();
@@ -117,7 +117,7 @@ public class WalletItem extends Item {
 
     @Override
     public boolean onClicked(ItemStack walletStack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
-        if (clickType != ClickType.RIGHT || !slot.canTakePartial(player) || otherStack.isEmpty()) {
+        if (clickType != ClickType.RIGHT || !slot.canTakePartial(player) || otherStack.isEmpty() || WalletItem.getCurrencyFromNbt(walletStack) <= 0) {
             return false;
         }
         int addedItemsCount = WalletItem.addToWallet(walletStack, otherStack);

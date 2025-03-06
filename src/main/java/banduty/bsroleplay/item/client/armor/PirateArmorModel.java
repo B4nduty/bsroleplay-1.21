@@ -27,6 +27,6 @@ public class PirateArmorModel extends GeoModel<PirateArmorItem> {
 
     @Override
     public Identifier getAnimationResource(PirateArmorItem animatable) {
-        return BsRolePlay.identifierOf("animations/generic.animation.json");
+        return null;
     }
 }
