@@ -114,7 +114,7 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
             return ActionResult.SUCCESS;
         }
         ItemStack mainHandStack = player.getMainHandStack();
-        ItemStack sellStack = shopBlockEntity.getRenderStack();
+        ItemStack sellStack = shopBlockEntity.getSellStack();
         if (sellStack.isEmpty()) {
             player.sendMessage(Text.translatable("bsroleplay.shop.no_item_sell").formatted(Formatting.RED), true);
             return ActionResult.PASS;
@@ -122,10 +122,10 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
         if (mainHandStack.getItem() instanceof CoinItem coinItem && coinItem.currencyValue < 0) {
             shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
             player.getInventory().insertStack(sellStack.copyWithCount(1));
-            shopBlockEntity.reduceSellStack(1);
             if (!player.isCreative()) mainHandStack.decrement(1);
             if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
                     .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
+            shopBlockEntity.reduceSellStack(sellStack, 1);
             return ActionResult.SUCCESS;
         }
         if (mainHandStack.getItem() != ModItems.WALLET) {
@@ -144,9 +144,9 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
                 WalletItem.getCurrencyFromNbt(mainHandStack) - shopBlockEntity.getCurrencyCounter());
         shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
         player.getInventory().insertStack(sellStack.copyWithCount(1));
-        shopBlockEntity.reduceSellStack(1);
         if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
                 .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
+        shopBlockEntity.reduceSellStack(sellStack, 1);
         return ActionResult.SUCCESS;
     }
 

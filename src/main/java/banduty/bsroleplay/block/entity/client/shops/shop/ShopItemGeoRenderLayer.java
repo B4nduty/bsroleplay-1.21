@@ -26,8 +26,9 @@ public class ShopItemGeoRenderLayer extends GeoRenderLayer<ShopBlockEntity> {
     @Override
     public void render(MatrixStack poseStack, ShopBlockEntity animatable, BakedGeoModel bakedModel, RenderLayer renderType,
                        VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
+        ItemStack stack = animatable.getSellStack();
+        if (stack == ItemStack.EMPTY) return;
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        ItemStack stack = animatable.getRenderStack();
         poseStack.push();
         poseStack.translate(0f, 0.7f + (float) BsRolePlay.getHeight() / 2000, 0f);
         poseStack.scale(0.5f, 0.5f, 0.5f);

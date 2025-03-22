@@ -110,7 +110,8 @@ public class PoliceBaton extends Item implements GeoItem {
                 world.getChunk(chunkPos.x, chunkPos.z);
 
                 if (world.isChunkLoaded(chunkPos.x, chunkPos.z)) {
-                    playerTarget.teleport(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), true);
+                    playerTarget.requestTeleport(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ());
+                    world.sendEntityStatus(playerTarget, (byte)46);
                 }
             }
             for (PlayerEntity players : attacker.getWorld().getPlayers()) {

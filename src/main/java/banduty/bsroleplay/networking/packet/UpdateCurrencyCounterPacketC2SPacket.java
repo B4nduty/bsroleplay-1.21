@@ -11,18 +11,18 @@ import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public record UpdateCurrencyCounterPacketC2SPacket(int syncId, int increaseAmount) implements CustomPayload {
+public record UpdateCurrencyCounterPacketC2SPacket(int syncId, int amount) implements CustomPayload {
     public static final CustomPayload.Id<UpdateCurrencyCounterPacketC2SPacket> CURRENCY_COUNTER_ID = new CustomPayload.Id<>(BsRolePlay.identifierOf("currency_counter"));
     public static final PacketCodec<RegistryByteBuf, UpdateCurrencyCounterPacketC2SPacket> CODEC = PacketCodec.tuple(
             PacketCodecs.INTEGER, UpdateCurrencyCounterPacketC2SPacket::syncId,
-            PacketCodecs.INTEGER, UpdateCurrencyCounterPacketC2SPacket::increaseAmount,
+            PacketCodecs.INTEGER, UpdateCurrencyCounterPacketC2SPacket::amount,
             UpdateCurrencyCounterPacketC2SPacket::new
     );
 
     public void handlePacket(ServerPlayNetworking.Context context) {
         MinecraftServer server = context.server();
         ServerPlayerEntity player = context.player();
-        UpdateCurrencyCounterPacketC2SPacket packet = new UpdateCurrencyCounterPacketC2SPacket(syncId, increaseAmount);
+        UpdateCurrencyCounterPacketC2SPacket packet = new UpdateCurrencyCounterPacketC2SPacket(syncId, amount);
         handle(packet, server, player);
     }
 
@@ -30,18 +30,14 @@ public record UpdateCurrencyCounterPacketC2SPacket(int syncId, int increaseAmoun
         server.execute(() -> {
             if (player.currentScreenHandler.syncId == packet.syncId) {
                 if (player.currentScreenHandler instanceof ShopScreenHandler handler) {
-                    if (packet.increaseAmount > 0) {
-                        handler.increaseCurrencyCounter(packet.increaseAmount);
-                    } else {
-                        handler.decreaseCurrencyCounter(-packet.increaseAmount);
+                    if (packet.amount >= 0) {
+                        handler.setCurrencyCounter(packet.amount);
                     }
                 }
 
                 if (player.currentScreenHandler instanceof CreativeShopScreenHandler handler) {
-                    if (packet.increaseAmount > 0) {
-                        handler.increaseCurrencyCounter(packet.increaseAmount);
-                    } else {
-                        handler.decreaseCurrencyCounter(-packet.increaseAmount);
+                    if (packet.amount >= 0) {
+                        handler.setCurrencyCounter(packet.amount);
                     }
                 }
             }

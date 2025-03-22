@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -36,13 +37,12 @@ import software.bernie.geckolib.util.RenderUtil;
 import java.util.UUID;
 
 public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<ShopBlockEntity.Data>, ImplementedInventory, GeoBlockEntity {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(5, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(7, ItemStack.EMPTY);
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected UUID owner = Util.NIL_UUID;
-    private static final int SELL_SLOT = 0;
 
     protected final PropertyDelegate propertyDelegate;
-    private int currencyCounter = 0;
+    public int currencyCounter = 0;
     public int maxCoins = BsRolePlay.CONFIG.currency.getWalletMaxCoins();
     private int coins = 0;
 
@@ -171,13 +171,22 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
         return nbt;
     }
 
-    public void reduceSellStack(int decrease){
-        this.removeStack(SELL_SLOT, decrease);
+    public void reduceSellStack(ItemStack itemStack, int decrease) {
+        for (int i = 0; i < 7; i++) {
+            if (inventory.get(i).getItem() == itemStack.getItem()) {
+                this.removeStack(i, decrease);
+            }
+        }
         markDirty();
     }
 
-    public ItemStack getRenderStack() {
-        return this.getStack(SELL_SLOT);
+    public ItemStack getSellStack() {
+        for (int i = 0; i < 7; i++) {
+            if (inventory.get(i).getItem() != null && inventory.get(i).getItem() != Items.AIR) {
+                return this.getStack(i);
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
     public record Data(BlockPos blockPos) implements CustomPayload {

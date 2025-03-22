@@ -4,6 +4,8 @@ import banduty.bsroleplay.util.IEntityDataSaver;
 import banduty.bsroleplay.util.StaminaData;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.advancement.AdvancementEntry;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
@@ -41,6 +43,8 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick{
 
             if (((IEntityDataSaver) playerEntity).bsroleplay$getPersistentData().getBoolean("handcuffed")) {
                 playerEntity.setVelocity(0, 0, 0);
+                playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20, 50,
+                        false, false, false));
             }
         }
     }

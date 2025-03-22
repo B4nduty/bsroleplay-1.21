@@ -4,7 +4,9 @@ package banduty.bsroleplay.screen.shop;
 import banduty.bsroleplay.block.entity.shops.ShopBlockEntity;
 import banduty.bsroleplay.item.ModItems;
 import banduty.bsroleplay.item.custom.blocks.currency.CoinItem;
+import banduty.bsroleplay.networking.packet.UpdateCurrencyPacketS2CPacket;
 import banduty.bsroleplay.screen.ModScreenHandlers;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,6 +17,7 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 public class ShopScreenHandler extends ScreenHandler {
     private final Inventory sellInventory;
@@ -35,11 +38,17 @@ public class ShopScreenHandler extends ScreenHandler {
         this.propertyDelegate = arrayPropertyDelegate;
 
         this.addSlot(new Slot(this.sellInventory, 0, 104, 11));
+        this.addSlot(new Slot(this.sellInventory, 1, 182, 27));
+        this.addSlot(new Slot(this.sellInventory, 2, 207, 27));
+        this.addSlot(new Slot(this.sellInventory, 3, 182, 52));
+        this.addSlot(new Slot(this.sellInventory, 4, 207, 52));
+        this.addSlot(new Slot(this.sellInventory, 5, 182, 77));
+        this.addSlot(new Slot(this.sellInventory, 6, 207, 77));
 
-        this.addSlot(new CoinOutputSlot(this.coinsInventory, 0, 38, 61, (CoinItem) ModItems.COPPER_COIN));
-        this.addSlot(new CoinOutputSlot(this.coinsInventory, 1, 66, 61, (CoinItem) ModItems.GOLD_COIN));
-        this.addSlot(new CoinOutputSlot(this.coinsInventory, 2, 94, 61, (CoinItem) ModItems.AMETHYST_COIN));
-        this.addSlot(new CoinOutputSlot(this.coinsInventory, 3, 122, 61, (CoinItem) ModItems.NETHERITE_COIN));
+        this.addSlot(new CoinOutputSlot(this.coinsInventory, 0, 9, 61, (CoinItem) ModItems.COPPER_COIN));
+        this.addSlot(new CoinOutputSlot(this.coinsInventory, 1, 36, 61, (CoinItem) ModItems.GOLD_COIN));
+        this.addSlot(new CoinOutputSlot(this.coinsInventory, 2, 124, 61, (CoinItem) ModItems.AMETHYST_COIN));
+        this.addSlot(new CoinOutputSlot(this.coinsInventory, 3, 152, 61, (CoinItem) ModItems.NETHERITE_COIN));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -63,24 +72,15 @@ public class ShopScreenHandler extends ScreenHandler {
         }
     }
 
-    public int getCurrencyAmount() {
-        return this.propertyDelegate.get(0);
-    }
-
-    public void increaseCurrencyCounter(int increaseAmount) {
-        int currentValue = this.propertyDelegate.get(0);
-        if (currentValue + increaseAmount <= 32000) {
-            this.blockEntity.setCurrencyCounter(currentValue + increaseAmount);
-            this.propertyDelegate.set(0, currentValue + increaseAmount);
+    public void setCurrencyCounter(int value) {
+        if (value >= 0 && value <= 32000) {
+            this.blockEntity.setCurrencyCounter(value);
+            this.propertyDelegate.set(0, value);
         }
     }
 
-    public void decreaseCurrencyCounter(int decreaseAmount) {
-        int currentValue = this.propertyDelegate.get(0);
-        if (currentValue - decreaseAmount >= 0) {
-            this.blockEntity.setCurrencyCounter(currentValue - decreaseAmount);
-            this.propertyDelegate.set(0, currentValue - decreaseAmount);
-        }
+    private void sendCurrencyUpdatePacket(ServerPlayerEntity player, int amount) {
+        ServerPlayNetworking.send(player, new UpdateCurrencyPacketS2CPacket(this.syncId, amount));
     }
 
     @Override
@@ -100,37 +100,36 @@ public class ShopScreenHandler extends ScreenHandler {
         if (slot.hasStack()) {
             ItemStack newStack = slot.getStack();
             originalStack = newStack.copy();
-            if (1 <= slotIndex && slotIndex < 5) {
-                if (!this.insertItem(newStack, 5, 41, true)) {
+
+            int shopStart = 0; // First slot of the shop inventory
+            int shopEnd = 6;   // Last slot of the shop inventory (7 slots: 0-6)
+            int playerStart = 7; // First slot of the player inventory
+            int playerEnd = 43;  // Last slot of the player inventory (36 slots: 7-42)
+
+            // Move items from the shop to the player inventory
+            if (slotIndex >= shopStart && slotIndex <= shopEnd) {
+                if (!this.insertItem(newStack, playerStart, playerEnd, false)) {
                     return ItemStack.EMPTY;
                 }
-                slot.onQuickTransfer(newStack, originalStack);
-            } else if (5 <= slotIndex && slotIndex < 41 ?
-                            (slotIndex < 32 ?
-                                    !this.insertItem(newStack, 32, 41, false) :
-                                    !this.insertItem(newStack, 5, 32, false)) :
-                    !this.insertItem(newStack, 5, 41, false)
-            ) {
-                return ItemStack.EMPTY;
             }
+            // Move items from the player inventory to the shop
+            else if (slotIndex >= playerStart && slotIndex < playerEnd) {
+                if (!this.insertItem(newStack, shopStart, shopEnd, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
             if (newStack.isEmpty()) {
                 slot.setStack(ItemStack.EMPTY);
             } else {
                 slot.markDirty();
             }
+
             if (newStack.getCount() == originalStack.getCount()) {
                 return ItemStack.EMPTY;
             }
+
             slot.onTakeItem(player, newStack);
-
-            if (1 <= slotIndex && slotIndex < 5) {
-                player.dropItem(newStack, false);
-            }
-
-            if (slot instanceof CoinOutputSlot coinOutputSlot) {
-                coinOutputSlot.setStack(new ItemStack(coinOutputSlot.coinItem, this.propertyDelegate.get(1) /
-                        coinOutputSlot.coinItem.currencyValue));
-            }
         }
 
         return originalStack;
@@ -150,7 +149,7 @@ public class ShopScreenHandler extends ScreenHandler {
         }
     }
 
-    public static class CoinOutputSlot extends Slot {
+    public class CoinOutputSlot extends Slot {
         private final CoinItem coinItem;
 
         public CoinOutputSlot(Inventory inventory, int index, int x, int y, CoinItem coinItem) {
@@ -161,6 +160,21 @@ public class ShopScreenHandler extends ScreenHandler {
         @Override
         public boolean canInsert(ItemStack stack) {
             return false;
+        }
+
+        @Override
+        public void onTakeItem(PlayerEntity player, ItemStack takenStack) {
+            super.onTakeItem(player, takenStack);
+            if (player instanceof ServerPlayerEntity serverPlayerEntity) sendCurrencyUpdatePacket(
+                    serverPlayerEntity, ShopScreenHandler.this.propertyDelegate.get(1) -
+                            this.coinItem.currencyValue * takenStack.getCount());
+        }
+
+        @Override
+        public void onQuickTransfer(ItemStack newItem, ItemStack original) {
+            super.onQuickTransfer(newItem, original);
+            ShopScreenHandler.this.propertyDelegate.set(1, ShopScreenHandler.this.propertyDelegate.get(1) -
+                    this.coinItem.currencyValue * (original.getCount() - newItem.getCount()));
         }
 
         @Override

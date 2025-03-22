@@ -42,7 +42,7 @@ public class CreativeShopBlockEntity extends BlockEntity implements ExtendedScre
     private static final int SELL_SLOT = 0;
 
     protected final PropertyDelegate propertyDelegate;
-    private int currencyCounter = 0;
+    public int currencyCounter = 0;
 
     public CreativeShopBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CREATIVE_SHOP_BLOCK_ENTITY, pos, state);

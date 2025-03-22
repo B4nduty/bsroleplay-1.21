@@ -3,69 +3,77 @@ package banduty.bsroleplay.screen.shop;
 
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.networking.packet.UpdateCurrencyCounterPacketC2SPacket;
-import banduty.bsroleplay.screen.button.TexturedButton;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
 public class ShopScreen extends HandledScreen<ShopScreenHandler> {
     private static final Identifier TEXTURE = BsRolePlay.identifierOf("textures/gui/shop_gui.png");
-    private static final Identifier INCREASE_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase.png");
-    private static final Identifier INCREASE_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase_hover.png");
-    private static final Identifier INCREASE_100_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase_100.png");
-    private static final Identifier INCREASE_100_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase_100_hover.png");
-    private static final Identifier INCREASE_10K_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase_1k.png");
-    private static final Identifier INCREASE_10K_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/increase_1k_hover.png");
-    private static final Identifier DECREASE_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease.png");
-    private static final Identifier DECREASE_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease_hover.png");
-    private static final Identifier DECREASE_100_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease_100.png");
-    private static final Identifier DECREASE_100_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease_100_hover.png");
-    private static final Identifier DECREASE_1K_BUTTON_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease_1k.png");
-    private static final Identifier DECREASE_1K_BUTTON_HOVER_TEXTURE = BsRolePlay.identifierOf("textures/gui/decrease_1k_hover.png");
+    private TextFieldWidget currencyTextField;
 
     public ShopScreen(ShopScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        this.backgroundWidth = 194;
-        this.backgroundHeight = 165;
+        this.backgroundWidth = 232;
+        this.backgroundHeight = 166;
         this.playerInventoryTitleY = 1000;
         this.titleY = 1000;
     }
 
     @Override
     protected void init() {
-        TexturedButton increase1Button = new TexturedButton(this.width / 2 - 77, this.height / 2 - 47, 16, 16,
-                button -> sendCurrencyUpdatePacket(1), INCREASE_BUTTON_TEXTURE, INCREASE_BUTTON_HOVER_TEXTURE);
-
-        TexturedButton increase100Button = new TexturedButton(this.width / 2 - 77, this.height / 2 - 62, 16, 16,
-                button -> sendCurrencyUpdatePacket(100), INCREASE_100_BUTTON_TEXTURE, INCREASE_100_BUTTON_HOVER_TEXTURE);
-
-        TexturedButton increase10KButton = new TexturedButton(this.width / 2 - 77, this.height / 2 - 77, 16, 16,
-                button -> sendCurrencyUpdatePacket(1000), INCREASE_10K_BUTTON_TEXTURE, INCREASE_10K_BUTTON_HOVER_TEXTURE);
-
-        TexturedButton decrease1Button = new TexturedButton(this.width / 2 + 43, this.height / 2 - 47, 16, 16,
-                button -> sendCurrencyUpdatePacket(-1), DECREASE_BUTTON_TEXTURE, DECREASE_BUTTON_HOVER_TEXTURE);
-
-        TexturedButton decrease100Button = new TexturedButton(this.width / 2 + 43, this.height / 2 - 62, 16, 16,
-                button -> sendCurrencyUpdatePacket(-100), DECREASE_100_BUTTON_TEXTURE, DECREASE_100_BUTTON_HOVER_TEXTURE);
-
-        TexturedButton decrease10KButton = new TexturedButton(this.width / 2 + 43, this.height / 2 - 77, 16, 16,
-                button -> sendCurrencyUpdatePacket(-1000), DECREASE_1K_BUTTON_TEXTURE, DECREASE_1K_BUTTON_HOVER_TEXTURE);
-
-        this.addDrawableChild(increase1Button);
-        this.addDrawableChild(increase100Button);
-        this.addDrawableChild(increase10KButton);
-        this.addDrawableChild(decrease1Button);
-        this.addDrawableChild(decrease100Button);
-        this.addDrawableChild(decrease10KButton);
         super.init();
+
+        this.currencyTextField = new TextFieldWidget(
+                this.textRenderer,
+                this.x + 52,
+                this.y + 34,
+                72,
+                18,
+                Text.literal("")
+        );
+
+        this.currencyTextField.setText(this.handler.blockEntity.currencyCounter + " RP");
+
+        this.addSelectableChild(this.currencyTextField);
+
+        this.setInitialFocus(this.currencyTextField);
+
+        this.addDrawableChild(ButtonWidget.builder(
+                Text.literal("Done"),
+                button -> this.onDoneButtonClicked()
+        ).dimensions(
+                this.x + 68,
+                this.y + 60,
+                40,
+                18
+        ).build());
+    }
+
+    private void onDoneButtonClicked() {
+        String inputText = this.currencyTextField.getText();
+
+        String cleanedInput = inputText.replaceAll("[^0-9]", "");
+
+        int newValue = cleanedInput.isEmpty() ? -1 : Integer.parseInt(cleanedInput);
+        if (newValue < 0) {
+            this.close();
+            return;
+        }
+
+        this.handler.setCurrencyCounter(newValue);
+        this.sendCurrencyUpdatePacket(newValue);
+        this.close();
     }
 
     private void sendCurrencyUpdatePacket(int amount) {
@@ -82,8 +90,35 @@ public class ShopScreen extends HandledScreen<ShopScreenHandler> {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
-        context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(this.handler.getCurrencyAmount() + " RP"), this.x + 90, this.y + 39, 0xffffff);
+
+        this.currencyTextField.render(context, mouseX, mouseY, delta);
+
         context.drawCenteredTextWithShadow(this.textRenderer, Text.literal("Shop"), this.x + 77, this.y + 15, 0xffffff);
         drawMouseoverTooltip(context, mouseX, mouseY);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (keyCode == GLFW.GLFW_KEY_ENTER || keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+            this.onDoneButtonClicked();
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public boolean charTyped(char chr, int modifiers) {
+        if (this.currencyTextField.charTyped(chr, modifiers)) {
+            return true;
+        }
+        return super.charTyped(chr, modifiers);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (this.currencyTextField.mouseClicked(mouseX, mouseY, button)) {
+            return true;
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
     }
 }

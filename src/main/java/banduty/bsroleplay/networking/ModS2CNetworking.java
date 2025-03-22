@@ -13,6 +13,7 @@ public class ModS2CNetworking {
         ClientPlayNetworking.registerGlobalReceiver(VelocityUpdateS2CPacket.VELOCITY_UPDATE_ID, VelocityUpdateS2CPacket::handlePacket);
         ClientPlayNetworking.registerGlobalReceiver(RegenStaminaS2CPacket.REGEN_STAMINA_ID, RegenStaminaS2CPacket::handlePacket);
         ClientPlayNetworking.registerGlobalReceiver(HandcuffedS2CPacket.HANDCUFFED, HandcuffedS2CPacket::handlePacket);
+        ClientPlayNetworking.registerGlobalReceiver(UpdateCurrencyPacketS2CPacket.S2C_CURRENCY_COUNTER_ID, UpdateCurrencyPacketS2CPacket::handlePacket);
     }
 
     public static void registerS2CNetworking() {

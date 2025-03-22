@@ -30,7 +30,7 @@ public class CreativeShopScreenHandler extends ScreenHandler {
         if (sellInventory != null) sellInventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
 
-        this.addSlot(new Slot(this.sellInventory, 0, 80, 59));
+        this.addSlot(new Slot(this.sellInventory, 0, 20, 60));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -43,23 +43,10 @@ public class CreativeShopScreenHandler extends ScreenHandler {
         return super.onButtonClick(player, id);
     }
 
-    public int getCurrencyAmount() {
-        return this.propertyDelegate.get(0);
-    }
-
-    public void increaseCurrencyCounter(int increaseAmount) {
-        int currentValue = this.propertyDelegate.get(0);
-        if (currentValue + increaseAmount <= 32000) {
-            this.blockEntity.setCurrencyCounter(currentValue + increaseAmount);
-            this.propertyDelegate.set(0, currentValue + increaseAmount);
-        }
-    }
-
-    public void decreaseCurrencyCounter(int decreaseAmount) {
-        int currentValue = this.propertyDelegate.get(0);
-        if (currentValue - decreaseAmount >= 0) {
-            this.blockEntity.setCurrencyCounter(currentValue - decreaseAmount);
-            this.propertyDelegate.set(0, currentValue - decreaseAmount);
+    public void setCurrencyCounter(int value) {
+        if (value >= 0 && value <= 32000) {
+            this.blockEntity.setCurrencyCounter(value);
+            this.propertyDelegate.set(0, value);
         }
     }
 

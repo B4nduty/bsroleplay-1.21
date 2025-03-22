@@ -16,6 +16,7 @@ public class ModPayloads {
         registerS2C(VelocityUpdateS2CPacket.VELOCITY_UPDATE_ID, VelocityUpdateS2CPacket.CODEC);
         registerS2C(RegenStaminaS2CPacket.REGEN_STAMINA_ID, RegenStaminaS2CPacket.CODEC);
         registerS2C(HandcuffedS2CPacket.HANDCUFFED, HandcuffedS2CPacket.CODEC);
+        registerS2C(UpdateCurrencyPacketS2CPacket.S2C_CURRENCY_COUNTER_ID, UpdateCurrencyPacketS2CPacket.CODEC);
 
         registerC2S(PoliceEffectsC2SPacket.POLICE_SPEED_ID, PoliceEffectsC2SPacket.CODEC);
         registerC2S(RegenStaminaC2SPacket.SET_REGEN_STAMINA_ID, RegenStaminaC2SPacket.CODEC);
