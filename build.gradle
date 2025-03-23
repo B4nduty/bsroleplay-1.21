@@ -47,7 +47,8 @@ dependencies {
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib}"
 
 	modApi "com.terraformersmc:modmenu:${project.modmenu}"
-	
+
+	modApi "dev.architectury:architectury-fabric:${project.architectury}"
 }
 
 processResources {
