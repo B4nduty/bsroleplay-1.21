@@ -1,10 +1,8 @@
 
-package banduty.bsroleplay.block.entity.shops;
+package banduty.bsroleplay.block.entity;
 
 import banduty.bsroleplay.BsRolePlay;
-import banduty.bsroleplay.block.entity.ImplementedInventory;
-import banduty.bsroleplay.block.entity.ModBlockEntities;
-import banduty.bsroleplay.screen.shop.ShopScreenHandler;
+import banduty.bsroleplay.screen.clockpunch.ClockPunchScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -37,24 +35,23 @@ import software.bernie.geckolib.util.RenderUtil;
 
 import java.util.UUID;
 
-public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<ShopBlockEntity.Data>, ImplementedInventory, GeoBlockEntity {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(7, ItemStack.EMPTY);
+public class ClockPunchBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<ClockPunchBlockEntity.Data>, ImplementedInventory, GeoBlockEntity {
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(28, ItemStack.EMPTY);
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected UUID owner = Util.NIL_UUID;
 
     protected final PropertyDelegate propertyDelegate;
-    public int currencyCounter = 0;
-    public int maxCoins = BsRolePlay.CONFIG.currency.getWalletMaxCoins();
-    private int coins = 0;
+    public int salaryCounter = 0;
+    public int coinsCounter = 0;
 
-    public ShopBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SHOP_BLOCK_ENTITY, pos, state);
+    public ClockPunchBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.CLOCKPUNCH_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> ShopBlockEntity.this.currencyCounter;
-                    case 1 -> ShopBlockEntity.this.coins;
+                    case 0 -> ClockPunchBlockEntity.this.salaryCounter;
+                    case 1 -> ClockPunchBlockEntity.this.coinsCounter;
                     default -> 0;
                 };
             }
@@ -62,8 +59,8 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> ShopBlockEntity.this.currencyCounter = value;
-                    case 1 -> ShopBlockEntity.this.coins = value;
+                    case 0 -> ClockPunchBlockEntity.this.salaryCounter = value;
+                    case 1 -> ClockPunchBlockEntity.this.coinsCounter = value;
                 }
             }
 
@@ -90,13 +87,13 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
     }
 
     @Override
-    public Data getScreenOpeningData(ServerPlayerEntity player) {
+    public ClockPunchBlockEntity.Data getScreenOpeningData(ServerPlayerEntity player) {
         return createData();
     }
 
     @Override
     public Text getDisplayName() {
-        return Text.literal("Shop");
+        return Text.literal("ClockPunch");
     }
 
     @Override
@@ -108,28 +105,28 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("shop.currency_counter", currencyCounter);
-        nbt.putInt("shop.coins", coins);
-        nbt.putUuid("shop.owner", owner);
+        nbt.putInt("clockpunch.currency_counter", salaryCounter);
+        nbt.putInt("clockpunch.coins_counter", coinsCounter);
+        nbt.putUuid("clockpunch.owner", owner);
     }
 
     @Override
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
         Inventories.readNbt(nbt, inventory, registryLookup);
-        currencyCounter = nbt.getInt("shop.currency_counter");
-        coins = nbt.getInt("shop.coins");
-        owner = nbt.contains("shop.owner") ? nbt.getUuid("shop.owner") : Util.NIL_UUID;
+        salaryCounter = nbt.getInt("clockpunch.currency_counter");
+        coinsCounter = nbt.getInt("clockpunch.coins_counter");
+        owner = nbt.contains("clockpunch.owner") ? nbt.getUuid("clockpunch.owner") : Util.NIL_UUID;
     }
 
-    public Data createData() {
-        return new Data(this.getPos());
+    public ClockPunchBlockEntity.Data createData() {
+        return new ClockPunchBlockEntity.Data(this.getPos());
     }
 
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new ShopScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegate);
+        return new ClockPunchScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegate);
     }
 
     public void setOwner(UUID owner) {
@@ -141,22 +138,14 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
         return owner;
     }
 
-    public void addCoins(int coins) {
-        this.coins = coins;
+    public void setSalaryCounter(int salaryCounter) {
+        this.salaryCounter = salaryCounter;
         markDirty();
     }
 
-    public int getCoins() {
-        return coins;
-    }
-
-    public void setCurrencyCounter(int currencyCounter) {
-        this.currencyCounter = currencyCounter;
+    public void setCoinsCounter(int coinsCounter) {
+        this.coinsCounter = coinsCounter;
         markDirty();
-    }
-
-    public int getCurrencyCounter() {
-        return currencyCounter;
     }
 
     @Nullable
@@ -192,16 +181,16 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
 
     public record Data(BlockPos blockPos) implements CustomPayload {
 
-        public static final CustomPayload.Id<ShopBlockEntity.Data> IDENTIFIER = new CustomPayload.Id<>(BsRolePlay.identifierOf("shop_block_entity"));
+        public static final CustomPayload.Id<ClockPunchBlockEntity.Data> IDENTIFIER = new CustomPayload.Id<>(BsRolePlay.identifierOf("clockpunch_block_entity"));
 
         @Override
         public Id<? extends CustomPayload> getId() {
             return IDENTIFIER;
         }
 
-        public static final PacketCodec<RegistryByteBuf, ShopBlockEntity.Data> CODEC = PacketCodec.tuple(
-                BlockPos.PACKET_CODEC, ShopBlockEntity.Data::blockPos,
-                ShopBlockEntity.Data::new
+        public static final PacketCodec<RegistryByteBuf, ClockPunchBlockEntity.Data> CODEC = PacketCodec.tuple(
+                BlockPos.PACKET_CODEC, ClockPunchBlockEntity.Data::blockPos,
+                ClockPunchBlockEntity.Data::new
         );
     }
 }

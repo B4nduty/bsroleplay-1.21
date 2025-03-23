@@ -26,7 +26,7 @@
 			"banduty.bsroleplay.BsRolePlay"
 		],
 		"client": [
-			"banduty.bsroleplay.BsRolePlay"
+			"banduty.bsroleplay.BsRolePlayClient"
 		],
 		"fabric-datagen": [
 			"banduty.bsroleplay.BsRolePlay"
@@ -39,10 +39,10 @@
 		"bsroleplay.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.5",
+		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
-		"geckolib": ">=4.6.6",
+		"geckolib": ">=4.7.5.1",
 		"cloth-config": ">=15.0.140-fabric",
 		"architectury": ">=13.0.6-fabric",
 		"fabric-api": "*"

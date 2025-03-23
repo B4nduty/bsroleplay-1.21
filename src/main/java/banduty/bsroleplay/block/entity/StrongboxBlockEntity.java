@@ -1,7 +1,6 @@
 
 package banduty.bsroleplay.block.entity;
 import banduty.bsroleplay.BsRolePlay;
-import banduty.bsroleplay.block.entity.shops.ImplementedInventory;
 import banduty.bsroleplay.screen.strongbox.StrongboxScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;

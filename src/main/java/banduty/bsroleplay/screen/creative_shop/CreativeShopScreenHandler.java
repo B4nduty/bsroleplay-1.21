@@ -50,6 +50,10 @@ public class CreativeShopScreenHandler extends ScreenHandler {
         }
     }
 
+    public int getCurrencyCounter() {
+        return this.propertyDelegate.get(0);
+    }
+
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);

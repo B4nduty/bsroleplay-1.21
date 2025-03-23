@@ -1,10 +1,12 @@
 package banduty.bsroleplay.screen;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.block.entity.ClockPunchBlockEntity;
 import banduty.bsroleplay.block.entity.StrongboxBlockEntity;
 import banduty.bsroleplay.block.entity.shops.CreativeShopBlockEntity;
 import banduty.bsroleplay.block.entity.shops.ShopBlockEntity;
 import banduty.bsroleplay.item.custom.item.WalletItem;
+import banduty.bsroleplay.screen.clockpunch.ClockPunchScreenHandler;
 import banduty.bsroleplay.screen.creative_shop.CreativeShopScreenHandler;
 import banduty.bsroleplay.screen.shop.ShopScreenHandler;
 import banduty.bsroleplay.screen.strongbox.StrongboxScreenHandler;
@@ -38,6 +40,12 @@ public class ModScreenHandlers {
             registerExtended("strongbox_gui", new ExtendedScreenHandlerType<>(
                     StrongboxScreenHandler::new,
                     StrongboxBlockEntity.Data.CODEC
+            ));
+
+    public static final ScreenHandlerType<ClockPunchScreenHandler> CLOCKPUNCH_SCREEN_HANDLER =
+            registerExtended("clockpunch_gui", new ExtendedScreenHandlerType<>(
+                    ClockPunchScreenHandler::new,
+                    ClockPunchBlockEntity.Data.CODEC
             ));
 
     private static <T extends ScreenHandler> ScreenHandlerType<T> registerExtended(String name, ScreenHandlerType<T> screenHandlerType) {

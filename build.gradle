@@ -44,8 +44,6 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
-	modApi "dev.architectury:architectury-fabric:${project.architectury}"
-
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib}"
 
 	modApi "com.terraformersmc:modmenu:${project.modmenu}"

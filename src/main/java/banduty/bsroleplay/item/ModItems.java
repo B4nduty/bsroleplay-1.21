@@ -3,6 +3,7 @@ package banduty.bsroleplay.item;
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.block.ModBlocks;
 import banduty.bsroleplay.item.custom.armor.*;
+import banduty.bsroleplay.item.custom.blocks.ClockpunchItem;
 import banduty.bsroleplay.item.custom.blocks.ShopItem;
 import banduty.bsroleplay.item.custom.blocks.StrongboxItem;
 import banduty.bsroleplay.item.custom.blocks.TinyBandutyItem;
@@ -207,6 +208,8 @@ public class ModItems {
             new ShopItem(ModBlocks.CREATIVE_SHOP, new Item.Settings().rarity(Rarity.EPIC)), List.of(ModItemGroups.BLOCKS));
     public static final Item STRONGBOX = registerItem("strongbox",
             new StrongboxItem(ModBlocks.STRONGBOX, new Item.Settings()), List.of(ModItemGroups.BLOCKS));
+    public static final Item CLOCKPUNCH = registerItem("clockpunch",
+            new ClockpunchItem(ModBlocks.CLOCKPUNCH, new Item.Settings()), null);
 
     private static <T extends Item> T registerItem(String name, T item, @Nullable List<RegistryKey<ItemGroup>> itemGroups) {
         Registry.register(Registries.ITEM, BsRolePlay.identifierOf(name), item);

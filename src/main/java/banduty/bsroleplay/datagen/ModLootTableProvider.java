@@ -32,6 +32,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.NETHERITE_COIN, ModItems.NETHERITE_COIN);
         addDrop(ModBlocks.NETHERITE_COIN_STACK, coinStackDrops(ModBlocks.NETHERITE_COIN_STACK, ModItems.NETHERITE_COIN));
         addDrop(ModBlocks.STRONGBOX, ModItems.STRONGBOX);
+        addDrop(ModBlocks.CLOCKPUNCH, ModItems.CLOCKPUNCH);
     }
 
     public LootTable.Builder coinStackDrops(Block drop, Item item) {

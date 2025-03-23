@@ -15,7 +15,6 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
 public class CreativeShopScreen extends HandledScreen<CreativeShopScreenHandler> {
@@ -43,7 +42,7 @@ public class CreativeShopScreen extends HandledScreen<CreativeShopScreenHandler>
                 Text.literal("")
         );
 
-        this.currencyTextField.setText(this.handler.blockEntity.currencyCounter + " RP");
+        this.currencyTextField.setText(this.handler.getCurrencyCounter() + " RP");
 
         this.addSelectableChild(this.currencyTextField);
 
@@ -98,27 +97,10 @@ public class CreativeShopScreen extends HandledScreen<CreativeShopScreenHandler>
     }
 
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (keyCode == GLFW.GLFW_KEY_ENTER || keyCode == GLFW.GLFW_KEY_KP_ENTER) {
-            this.onDoneButtonClicked();
-            return true;
-        }
-        return super.keyPressed(keyCode, scanCode, modifiers);
-    }
-
-    @Override
     public boolean charTyped(char chr, int modifiers) {
         if (this.currencyTextField.charTyped(chr, modifiers)) {
             return true;
         }
         return super.charTyped(chr, modifiers);
-    }
-
-    @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (this.currencyTextField.mouseClicked(mouseX, mouseY, button)) {
-            return true;
-        }
-        return super.mouseClicked(mouseX, mouseY, button);
     }
 }

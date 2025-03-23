@@ -703,6 +703,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.STRONGBOX)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLOCKPUNCH, 1)
+                .pattern("III")
+                .pattern("IRI")
+                .pattern("III")
+                .input('R', ModItems.GOLD_COIN)
+                .input('I', Items.IRON_BLOCK)
+                .criterion(hasItem(ModItems.GOLD_COIN), conditionsFromItem(ModItems.GOLD_COIN))
+                .criterion(hasItem(Items.IRON_BLOCK), conditionsFromItem(Items.IRON_BLOCK))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.CLOCKPUNCH)));
+
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.COPPER_COIN, RecipeCategory.MISC,
                 ModItems.COPPER_COIN_STACK);
 

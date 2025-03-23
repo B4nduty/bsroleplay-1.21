@@ -1,4 +1,4 @@
-package banduty.bsroleplay.block.entity.shops;
+package banduty.bsroleplay.block.entity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;

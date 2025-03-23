@@ -1,6 +1,7 @@
 package banduty.bsroleplay.networking.packet;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.screen.clockpunch.ClockPunchScreenHandler;
 import banduty.bsroleplay.screen.shop.ShopScreenHandler;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
@@ -30,6 +31,10 @@ public record UpdateCurrencyPacketS2CPacket(int syncId, int amount) implements C
             if (player.currentScreenHandler instanceof ShopScreenHandler shopHandler &&
                     shopHandler.syncId == packet.syncId()) {
                 shopHandler.setCurrencyCounter(packet.amount());
+            }
+            if (player.currentScreenHandler instanceof ClockPunchScreenHandler shopHandler &&
+                    shopHandler.syncId == packet.syncId()) {
+                shopHandler.setCoinsCounter(packet.amount());
             }
         });
     }

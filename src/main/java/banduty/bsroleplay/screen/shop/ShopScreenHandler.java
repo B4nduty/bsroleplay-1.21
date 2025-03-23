@@ -79,6 +79,10 @@ public class ShopScreenHandler extends ScreenHandler {
         }
     }
 
+    public int getCurrencyCounter() {
+        return this.propertyDelegate.get(0);
+    }
+
     private void sendCurrencyUpdatePacket(ServerPlayerEntity player, int amount) {
         ServerPlayNetworking.send(player, new UpdateCurrencyPacketS2CPacket(this.syncId, amount));
     }

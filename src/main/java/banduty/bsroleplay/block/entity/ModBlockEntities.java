@@ -53,7 +53,7 @@ public class ModBlockEntities {
                     ModBlocks.NETHERITE_COIN).build());
 
     public static final BlockEntityType<CreativeCoinBlockEntity> CREATIVE_COIN_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
-            BsRolePlay.identifierOf("netherite_coin_block_entity"),
+            BsRolePlay.identifierOf("creative_coin_block_entity"),
             BlockEntityType.Builder.create(CreativeCoinBlockEntity::new,
                     ModBlocks.CREATIVE_COIN).build());
 
@@ -81,4 +81,9 @@ public class ModBlockEntities {
             BsRolePlay.identifierOf("strongbox_block_entity"),
             BlockEntityType.Builder.create(StrongboxBlockEntity::new,
                     ModBlocks.STRONGBOX).build());
+
+    public static final BlockEntityType<ClockPunchBlockEntity> CLOCKPUNCH_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+            BsRolePlay.identifierOf("clockpunch_block_entity"),
+            BlockEntityType.Builder.create(ClockPunchBlockEntity::new,
+                    ModBlocks.CLOCKPUNCH).build());
 }

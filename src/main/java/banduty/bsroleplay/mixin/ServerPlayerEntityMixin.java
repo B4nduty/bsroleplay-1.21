@@ -1,6 +1,5 @@
 package banduty.bsroleplay.mixin;
 
-import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.util.IEntityDataSaver;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -16,8 +15,6 @@ public class ServerPlayerEntityMixin {
     public void teleport(TeleportTarget teleportTarget, CallbackInfoReturnable<Entity> cir) {
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) (Object) this;
 
-        BsRolePlay.LOGGER.info("Entity is: {}", playerEntity.getWorld() == null ? "Null" : "Alive");
-        BsRolePlay.LOGGER.info("Is Handcuffed: {}", ((IEntityDataSaver) playerEntity).bsroleplay$getPersistentData().getBoolean("handcuffed") ? "True" : "False");
         if (playerEntity.getWorld() == null ||
                 !((IEntityDataSaver) playerEntity).bsroleplay$getPersistentData().getBoolean("handcuffed")) return;
 

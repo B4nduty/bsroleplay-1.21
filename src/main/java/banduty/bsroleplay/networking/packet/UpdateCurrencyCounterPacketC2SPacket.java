@@ -1,6 +1,7 @@
 package banduty.bsroleplay.networking.packet;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.screen.clockpunch.ClockPunchScreenHandler;
 import banduty.bsroleplay.screen.creative_shop.CreativeShopScreenHandler;
 import banduty.bsroleplay.screen.shop.ShopScreenHandler;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -38,6 +39,12 @@ public record UpdateCurrencyCounterPacketC2SPacket(int syncId, int amount) imple
                 if (player.currentScreenHandler instanceof CreativeShopScreenHandler handler) {
                     if (packet.amount >= 0) {
                         handler.setCurrencyCounter(packet.amount);
+                    }
+                }
+
+                if (player.currentScreenHandler instanceof ClockPunchScreenHandler handler) {
+                    if (packet.amount >= 0) {
+                        handler.setSalaryCounter(packet.amount);
                     }
                 }
             }

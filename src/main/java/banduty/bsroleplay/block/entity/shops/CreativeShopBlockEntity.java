@@ -2,6 +2,7 @@
 package banduty.bsroleplay.block.entity.shops;
 
 import banduty.bsroleplay.BsRolePlay;
+import banduty.bsroleplay.block.entity.ImplementedInventory;
 import banduty.bsroleplay.block.entity.ModBlockEntities;
 import banduty.bsroleplay.screen.creative_shop.CreativeShopScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
