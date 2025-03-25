@@ -2,7 +2,7 @@
 package banduty.bsroleplay;
 
 import banduty.bsroleplay.block.entity.ModBlockEntities;
-import banduty.bsroleplay.block.entity.client.ClockPunchRenderer;
+import banduty.bsroleplay.block.entity.client.clockpunch.ClockPunchRenderer;
 import banduty.bsroleplay.block.entity.client.StrongboxRenderer;
 import banduty.bsroleplay.block.entity.client.TinyBandutyRenderer;
 import banduty.bsroleplay.block.entity.client.coins.*;

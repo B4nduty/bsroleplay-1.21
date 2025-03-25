@@ -42,22 +42,39 @@ public class CreativeShopBlockEntity extends BlockEntity implements ExtendedScre
     protected UUID owner = Util.NIL_UUID;
     private static final int SELL_SLOT = 0;
 
-    protected final PropertyDelegate propertyDelegate;
+
+    protected final PropertyDelegate propertyDelegateLower;
+    protected final PropertyDelegate propertyDelegateUpper;
     public int currencyCounter = 0;
 
     public CreativeShopBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CREATIVE_SHOP_BLOCK_ENTITY, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegateLower = new PropertyDelegate() {
             @Override
             public int get(int index) {
-                return CreativeShopBlockEntity.this.currencyCounter;
+                return CreativeShopBlockEntity.this.currencyCounter & 0xFFFF; // Lower 16 bits
             }
 
             @Override
             public void set(int index, int value) {
-                if (index == 0) {
-                    CreativeShopBlockEntity.this.currencyCounter = value;
-                }
+                if (index == 0) CreativeShopBlockEntity.this.currencyCounter = (CreativeShopBlockEntity.this.currencyCounter & 0xFFFF0000) | (value & 0xFFFF);
+            }
+
+            @Override
+            public int size() {
+                return 1;
+            }
+        };
+
+        this.propertyDelegateUpper = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return (CreativeShopBlockEntity.this.currencyCounter >> 16) & 0xFFFF; // Upper 16 bits
+            }
+
+            @Override
+            public void set(int index, int value) {
+                if (index == 0) CreativeShopBlockEntity.this.currencyCounter = (CreativeShopBlockEntity.this.currencyCounter & 0xFFFF) | ((value & 0xFFFF) << 16);
             }
 
             @Override
@@ -101,7 +118,7 @@ public class CreativeShopBlockEntity extends BlockEntity implements ExtendedScre
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("creative_shop.currency_counter", currencyCounter);
+        if (currencyCounter > 0) nbt.putInt("creative_shop.currency_counter", currencyCounter);
         nbt.putUuid("creative_shop.owner", owner);
     }
 
@@ -120,7 +137,7 @@ public class CreativeShopBlockEntity extends BlockEntity implements ExtendedScre
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new CreativeShopScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegate);
+        return new CreativeShopScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegateLower, this.propertyDelegateUpper);
     }
 
     public void setOwner(UUID owner) {

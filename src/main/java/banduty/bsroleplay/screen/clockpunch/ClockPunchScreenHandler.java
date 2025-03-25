@@ -18,26 +18,28 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class ClockPunchScreenHandler extends ScreenHandler {
     private final Inventory coinsInventory;
-    private final PropertyDelegate propertyDelegate;
+    private final PropertyDelegate propertyDelegateLower;
+    private final PropertyDelegate propertyDelegateUpper;
     public final ClockPunchBlockEntity blockEntity;
 
     public ClockPunchScreenHandler(int syncId, PlayerInventory playerInventory, ClockPunchBlockEntity.Data data) {
-        this(syncId, playerInventory, data, new ArrayPropertyDelegate(2));
+        this(syncId, playerInventory, data, new ArrayPropertyDelegate(2), new ArrayPropertyDelegate(2));
     }
 
-    public ClockPunchScreenHandler(int syncId, PlayerInventory playerInventory, ClockPunchBlockEntity.Data data, PropertyDelegate arrayPropertyDelegate) {
+    public ClockPunchScreenHandler(int syncId, PlayerInventory playerInventory, ClockPunchBlockEntity.Data data, PropertyDelegate propertyDelegateLower, PropertyDelegate propertyDelegateUpper) {
         super(ModScreenHandlers.CLOCKPUNCH_SCREEN_HANDLER, syncId);
         BlockEntity blockEntity = playerInventory.player.getWorld().getBlockEntity(data.blockPos());
         this.blockEntity = ((ClockPunchBlockEntity) blockEntity);
         this.coinsInventory = ((Inventory) blockEntity);
         if (coinsInventory != null) coinsInventory.onOpen(playerInventory.player);
-        this.propertyDelegate = arrayPropertyDelegate;
+        this.propertyDelegateLower = propertyDelegateLower;
+        this.propertyDelegateUpper = propertyDelegateUpper;
 
         addCoinsInventory();
-
         addPlayerHotbar(playerInventory);
 
-        addProperties(this.propertyDelegate);
+        addProperties(this.propertyDelegateLower);
+        addProperties(this.propertyDelegateUpper);
     }
 
     @Override
@@ -46,14 +48,17 @@ public class ClockPunchScreenHandler extends ScreenHandler {
     }
 
     public void setSalaryCounter(int value) {
-        if (value >= 0 && value <= 32000) {
+        if (value >= 0) {
             this.blockEntity.setSalaryCounter(value);
-            this.propertyDelegate.set(0, value);
+            this.propertyDelegateLower.set(0, value & 0xFFFF);
+            this.propertyDelegateUpper.set(0, (value >> 16) & 0xFFFF);
         }
     }
 
     public int getSalaryCounter() {
-        return this.propertyDelegate.get(0);
+        int lower = this.propertyDelegateLower.get(0);
+        int upper = this.propertyDelegateUpper.get(0);
+        return (upper << 16) | (lower & 0xFFFF);
     }
 
     private void sendCurrencyUpdatePacket(ServerPlayerEntity player, int amount) {
@@ -131,9 +136,9 @@ public class ClockPunchScreenHandler extends ScreenHandler {
     }
 
     private void addCoinsInventory() {
-        for (int x = 0; x < 7; x++) {
-            for (int y = 0; y < 4; y++) {
-                this.addSlot(new CoinSlot(this.coinsInventory, x + y * 7, 170 + 18 * x, 30 + 18 * y));
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 7; x++) {
+                this.addSlot(new CoinSlot(this.coinsInventory, x + y * 7, 170 + 18 * y, 30 + 18 * x));
             }
         }
     }
@@ -144,13 +149,16 @@ public class ClockPunchScreenHandler extends ScreenHandler {
         }
     }
 
-    public int getCoinsCounter() {
-        return this.propertyDelegate.get(1);
-    }
-
     public void setCoinsCounter(int value) {
         this.blockEntity.setCoinsCounter(value);
-        this.propertyDelegate.set(1, value);
+        this.propertyDelegateLower.set(1, value & 0xFFFF);
+        this.propertyDelegateUpper.set(1, (value >> 16) & 0xFFFF);
+    }
+
+    public int getCoinsCounter() {
+        int lower = this.propertyDelegateLower.get(1);
+        int upper = this.propertyDelegateUpper.get(1);
+        return (upper << 16) | (lower & 0xFFFF);
     }
 
     private class CoinSlot extends Slot {
@@ -160,7 +168,7 @@ public class ClockPunchScreenHandler extends ScreenHandler {
 
         @Override
         public boolean canInsert(ItemStack stack) {
-            return stack.getItem() instanceof CoinItem;
+            return stack.getItem() instanceof CoinItem coinItem && coinItem.currencyValue > 0;
         }
 
         @Override

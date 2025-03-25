@@ -27,15 +27,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class Clockpunch extends BlockWithEntity implements BlockEntityProvider {
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final DirectionProperty FACING = DirectionProperty.of("facing",
+        Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST);
+    public static final DirectionProperty FACING_UP = DirectionProperty.of("facing_up", Direction.UP, Direction.DOWN);
     public static final MapCodec<Clockpunch> CODEC = createCodec(Clockpunch::new);
-    protected static final VoxelShape WOOD = createCuboidShape(1.0, 0.0, 1.0, 15.0, 10.0, 15.0);
-    protected static final VoxelShape GLASS = createCuboidShape(4.0, 10.0, 4.0, 12.0, 16.0, 12.0);
-    protected static final VoxelShape SHAPE = VoxelShapes.union(WOOD, GLASS);
+    protected static final VoxelShape GROUND_SHAPE = VoxelShapes.union(
+            createCuboidShape(1.0, 0.0, 1.0, 15.0, 10.0, 15.0)
+    );
+
+    protected static final VoxelShape WALL_SHAPE = VoxelShapes.union(
+            createCuboidShape(1.0, 1.0, 5.0, 15.0, 15.0, 16.0)
+    );
 
     public Clockpunch(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING_UP, Direction.DOWN));
     }
 
     @Override
@@ -45,7 +52,13 @@ public class Clockpunch extends BlockWithEntity implements BlockEntityProvider {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        Direction facing = state.get(FACING);
+
+        if (facing.getAxis().isVertical()) {
+            return GROUND_SHAPE;
+        } else {
+            return WALL_SHAPE;
+        }
     }
 
     @Override
@@ -61,12 +74,19 @@ public class Clockpunch extends BlockWithEntity implements BlockEntityProvider {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(FACING_UP);
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState()
-                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        Direction clickedFace = ctx.getSide();
+        Direction playerHorizontalFacing = ctx.getHorizontalPlayerFacing();
+
+        if (clickedFace == Direction.UP) {
+            this.setDefaultState(this.stateManager.getDefaultState().with(FACING_UP, Direction.UP));
+        }
+
+        return this.getDefaultState().with(FACING, playerHorizontalFacing.getOpposite());
     }
 
     @Nullable

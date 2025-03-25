@@ -42,19 +42,20 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected UUID owner = Util.NIL_UUID;
 
-    protected final PropertyDelegate propertyDelegate;
+    protected final PropertyDelegate propertyDelegateLower;
+    protected final PropertyDelegate propertyDelegateUpper;
     public int currencyCounter = 0;
     public int maxCoins = BsRolePlay.CONFIG.currency.getWalletMaxCoins();
     private int coins = 0;
 
     public ShopBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SHOP_BLOCK_ENTITY, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegateLower = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> ShopBlockEntity.this.currencyCounter;
-                    case 1 -> ShopBlockEntity.this.coins;
+                    case 0 -> ShopBlockEntity.this.currencyCounter & 0xFFFF; // Lower 16 bits
+                    case 1 -> ShopBlockEntity.this.coins & 0xFFFF; // Lower 16 bits
                     default -> 0;
                 };
             }
@@ -62,8 +63,32 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> ShopBlockEntity.this.currencyCounter = value;
-                    case 1 -> ShopBlockEntity.this.coins = value;
+                    case 0 -> ShopBlockEntity.this.currencyCounter = (ShopBlockEntity.this.currencyCounter & 0xFFFF0000) | (value & 0xFFFF);
+                    case 1 -> ShopBlockEntity.this.coins = (ShopBlockEntity.this.coins & 0xFFFF0000) | (value & 0xFFFF);
+                }
+            }
+
+            @Override
+            public int size() {
+                return 2;
+            }
+        };
+
+        this.propertyDelegateUpper = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> (ShopBlockEntity.this.currencyCounter >> 16) & 0xFFFF; // Upper 16 bits
+                    case 1 -> (ShopBlockEntity.this.coins >> 16) & 0xFFFF; // Upper 16 bits
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> ShopBlockEntity.this.currencyCounter = (ShopBlockEntity.this.currencyCounter & 0xFFFF) | ((value & 0xFFFF) << 16);
+                    case 1 -> ShopBlockEntity.this.coins = (ShopBlockEntity.this.coins & 0xFFFF) | ((value & 0xFFFF) << 16);
                 }
             }
 
@@ -108,8 +133,8 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("shop.currency_counter", currencyCounter);
-        nbt.putInt("shop.coins", coins);
+        if (currencyCounter > 0) nbt.putInt("shop.currency_counter", currencyCounter);
+        if (coins > 0) nbt.putInt("shop.coins", coins);
         nbt.putUuid("shop.owner", owner);
     }
 
@@ -129,7 +154,7 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new ShopScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegate);
+        return new ShopScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegateLower, this.propertyDelegateUpper);
     }
 
     public void setOwner(UUID owner) {
@@ -176,6 +201,7 @@ public class ShopBlockEntity extends BlockEntity implements ExtendedScreenHandle
         for (int i = 0; i < 7; i++) {
             if (inventory.get(i).getItem() == itemStack.getItem()) {
                 this.removeStack(i, decrease);
+                break;
             }
         }
         markDirty();

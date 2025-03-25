@@ -123,8 +123,11 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
             shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
             player.getInventory().insertStack(sellStack.copyWithCount(1));
             if (!player.isCreative()) mainHandStack.decrement(1);
-            if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
-                    .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
+            if (shopBlockEntity.getOwner() != null) {
+                PlayerEntity playerEntity = world.getPlayerByUuid(shopBlockEntity.getOwner());
+                if (playerEntity != null) playerEntity.sendMessage(Text.translatable("bsroleplay.shop.sell_popup",
+                        sellStack.getName()).formatted(Formatting.GREEN), true);
+            }
             shopBlockEntity.reduceSellStack(sellStack, 1);
             return ActionResult.SUCCESS;
         }
@@ -144,8 +147,11 @@ public class Shop extends BlockWithEntity implements BlockEntityProvider {
                 WalletItem.getCurrencyFromNbt(mainHandStack) - shopBlockEntity.getCurrencyCounter());
         shopBlockEntity.addCoins(shopBlockEntity.getCoins() + shopBlockEntity.getCurrencyCounter());
         player.getInventory().insertStack(sellStack.copyWithCount(1));
-        if (shopBlockEntity.getOwner() != null) world.getPlayerByUuid(shopBlockEntity.getOwner())
-                .sendMessage(Text.translatable("bsroleplay.shop.sell_popup", sellStack.getName()).formatted(Formatting.GREEN), true);
+        if (shopBlockEntity.getOwner() != null) {
+            PlayerEntity playerEntity = world.getPlayerByUuid(shopBlockEntity.getOwner());
+            if (playerEntity != null) playerEntity.sendMessage(Text.translatable("bsroleplay.shop.sell_popup",
+                    sellStack.getName()).formatted(Formatting.GREEN), true);
+        }
         shopBlockEntity.reduceSellStack(sellStack, 1);
         return ActionResult.SUCCESS;
     }

@@ -22,20 +22,22 @@ import net.minecraft.server.network.ServerPlayerEntity;
 public class ShopScreenHandler extends ScreenHandler {
     private final Inventory sellInventory;
     private final Inventory coinsInventory = new SimpleInventory(4);
-    private final PropertyDelegate propertyDelegate;
+    private final PropertyDelegate propertyDelegateLower;
+    private final PropertyDelegate propertyDelegateUpper;
     public final ShopBlockEntity blockEntity;
 
     public ShopScreenHandler(int syncId, PlayerInventory playerInventory, ShopBlockEntity.Data data) {
-        this(syncId, playerInventory, data, new ArrayPropertyDelegate(2));
+        this(syncId, playerInventory, data, new ArrayPropertyDelegate(2), new ArrayPropertyDelegate(2));
     }
 
-    public ShopScreenHandler(int syncId, PlayerInventory playerInventory, ShopBlockEntity.Data data, PropertyDelegate arrayPropertyDelegate) {
+    public ShopScreenHandler(int syncId, PlayerInventory playerInventory, ShopBlockEntity.Data data, PropertyDelegate propertyDelegateLower, PropertyDelegate propertyDelegateUpper) {
         super(ModScreenHandlers.SHOP_SCREEN_HANDLER, syncId);
         BlockEntity blockEntity = playerInventory.player.getWorld().getBlockEntity(data.blockPos());
         this.blockEntity = ((ShopBlockEntity) blockEntity);
         this.sellInventory = ((Inventory) blockEntity);
         if (sellInventory != null) sellInventory.onOpen(playerInventory.player);
-        this.propertyDelegate = arrayPropertyDelegate;
+        this.propertyDelegateLower = propertyDelegateLower;
+        this.propertyDelegateUpper = propertyDelegateUpper;
 
         this.addSlot(new Slot(this.sellInventory, 0, 104, 11));
         this.addSlot(new Slot(this.sellInventory, 1, 182, 27));
@@ -53,9 +55,24 @@ public class ShopScreenHandler extends ScreenHandler {
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
 
-        onCoinsAdded(this.propertyDelegate.get(1));
+        onCoinsAdded(getCoins());
 
-        addProperties(this.propertyDelegate);
+        addProperties(this.propertyDelegateLower);
+        addProperties(this.propertyDelegateUpper);
+    }
+
+    public int getCoins() {
+        int lower = this.propertyDelegateLower.get(1);
+        int upper = this.propertyDelegateUpper.get(1);
+        return (upper << 16) | (lower & 0xFFFF);
+    }
+
+    public void setCoins(int value) {
+        if (value >= 0) {
+            this.blockEntity.setCurrencyCounter(value);
+            this.propertyDelegateLower.set(1, value & 0xFFFF);
+            this.propertyDelegateUpper.set(1, (value >> 16) & 0xFFFF);
+        }
     }
 
     @Override
@@ -73,14 +90,17 @@ public class ShopScreenHandler extends ScreenHandler {
     }
 
     public void setCurrencyCounter(int value) {
-        if (value >= 0 && value <= 32000) {
+        if (value >= 0) {
             this.blockEntity.setCurrencyCounter(value);
-            this.propertyDelegate.set(0, value);
+            this.propertyDelegateLower.set(0, value & 0xFFFF);
+            this.propertyDelegateUpper.set(0, (value >> 16) & 0xFFFF);
         }
     }
 
     public int getCurrencyCounter() {
-        return this.propertyDelegate.get(0);
+        int lower = this.propertyDelegateLower.get(0);
+        int upper = this.propertyDelegateUpper.get(0);
+        return (upper << 16) | (lower & 0xFFFF);
     }
 
     private void sendCurrencyUpdatePacket(ServerPlayerEntity player, int amount) {
@@ -169,16 +189,14 @@ public class ShopScreenHandler extends ScreenHandler {
         @Override
         public void onTakeItem(PlayerEntity player, ItemStack takenStack) {
             super.onTakeItem(player, takenStack);
-            if (player instanceof ServerPlayerEntity serverPlayerEntity) sendCurrencyUpdatePacket(
-                    serverPlayerEntity, ShopScreenHandler.this.propertyDelegate.get(1) -
-                            this.coinItem.currencyValue * takenStack.getCount());
+            if (player instanceof ServerPlayerEntity serverPlayerEntity)
+                sendCurrencyUpdatePacket(serverPlayerEntity, getCoins() - this.coinItem.currencyValue * takenStack.getCount());
         }
 
         @Override
         public void onQuickTransfer(ItemStack newItem, ItemStack original) {
             super.onQuickTransfer(newItem, original);
-            ShopScreenHandler.this.propertyDelegate.set(1, ShopScreenHandler.this.propertyDelegate.get(1) -
-                    this.coinItem.currencyValue * (original.getCount() - newItem.getCount()));
+            setCoins(getCoins() - this.coinItem.currencyValue * (original.getCount() - newItem.getCount()));
         }
 
         @Override

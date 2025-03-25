@@ -15,27 +15,30 @@ import net.minecraft.screen.slot.Slot;
 
 public class CreativeShopScreenHandler extends ScreenHandler {
     private final Inventory sellInventory;
-    private final PropertyDelegate propertyDelegate;
+    private final PropertyDelegate propertyDelegateLower;
+    private final PropertyDelegate propertyDelegateUpper;
     public final CreativeShopBlockEntity blockEntity;
 
     public CreativeShopScreenHandler(int syncId, PlayerInventory playerInventory, CreativeShopBlockEntity.Data data) {
-        this(syncId, playerInventory, data, new ArrayPropertyDelegate(1));
+        this(syncId, playerInventory, data, new ArrayPropertyDelegate(1), new ArrayPropertyDelegate(1));
     }
 
-    public CreativeShopScreenHandler(int syncId, PlayerInventory playerInventory, CreativeShopBlockEntity.Data data, PropertyDelegate arrayPropertyDelegate) {
+    public CreativeShopScreenHandler(int syncId, PlayerInventory playerInventory, CreativeShopBlockEntity.Data data, PropertyDelegate propertyDelegateLower, PropertyDelegate propertyDelegateUpper) {
         super(ModScreenHandlers.CREATIVE_SHOP_SCREEN_HANDLER, syncId);
         BlockEntity blockEntity = playerInventory.player.getWorld().getBlockEntity(data.blockPos());
         this.blockEntity = ((CreativeShopBlockEntity) blockEntity);
         this.sellInventory = ((Inventory) blockEntity);
         if (sellInventory != null) sellInventory.onOpen(playerInventory.player);
-        this.propertyDelegate = arrayPropertyDelegate;
+        this.propertyDelegateLower = propertyDelegateLower;
+        this.propertyDelegateUpper = propertyDelegateUpper;
 
         this.addSlot(new Slot(this.sellInventory, 0, 20, 60));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
 
-        addProperties(this.propertyDelegate);
+        addProperties(this.propertyDelegateLower);
+        addProperties(this.propertyDelegateUpper);
     }
 
     @Override
@@ -44,14 +47,17 @@ public class CreativeShopScreenHandler extends ScreenHandler {
     }
 
     public void setCurrencyCounter(int value) {
-        if (value >= 0 && value <= 32000) {
+        if (value >= 0) {
             this.blockEntity.setCurrencyCounter(value);
-            this.propertyDelegate.set(0, value);
+            this.propertyDelegateLower.set(0, value & 0xFFFF);
+            this.propertyDelegateUpper.set(0, (value >> 16) & 0xFFFF);
         }
     }
 
     public int getCurrencyCounter() {
-        return this.propertyDelegate.get(0);
+        int lower = this.propertyDelegateLower.get(0);
+        int upper = this.propertyDelegateUpper.get(0);
+        return (upper << 16) | (lower & 0xFFFF);
     }
 
     @Override

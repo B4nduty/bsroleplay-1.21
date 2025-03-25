@@ -4,6 +4,7 @@ package banduty.bsroleplay.block.entity;
 import banduty.bsroleplay.BsRolePlay;
 import banduty.bsroleplay.screen.clockpunch.ClockPunchScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,18 +41,27 @@ public class ClockPunchBlockEntity extends BlockEntity implements ExtendedScreen
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected UUID owner = Util.NIL_UUID;
 
-    protected final PropertyDelegate propertyDelegate;
+    protected final PropertyDelegate propertyDelegateLower;
+    protected final PropertyDelegate propertyDelegateUpper;
     public int salaryCounter = 0;
     public int coinsCounter = 0;
 
+    @Override
+    public boolean onSyncedBlockEvent(int type, int data) {
+        if (world != null && world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        }
+        return true;
+    }
+
     public ClockPunchBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CLOCKPUNCH_BLOCK_ENTITY, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegateLower = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> ClockPunchBlockEntity.this.salaryCounter;
-                    case 1 -> ClockPunchBlockEntity.this.coinsCounter;
+                    case 0 -> ClockPunchBlockEntity.this.salaryCounter & 0xFFFF; // Lower 16 bits
+                    case 1 -> ClockPunchBlockEntity.this.coinsCounter & 0xFFFF; // Lower 16 bits
                     default -> 0;
                 };
             }
@@ -59,8 +69,32 @@ public class ClockPunchBlockEntity extends BlockEntity implements ExtendedScreen
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> ClockPunchBlockEntity.this.salaryCounter = value;
-                    case 1 -> ClockPunchBlockEntity.this.coinsCounter = value;
+                    case 0 -> ClockPunchBlockEntity.this.salaryCounter = (ClockPunchBlockEntity.this.salaryCounter & 0xFFFF0000) | (value & 0xFFFF);
+                    case 1 -> ClockPunchBlockEntity.this.coinsCounter = (ClockPunchBlockEntity.this.coinsCounter & 0xFFFF0000) | (value & 0xFFFF);
+                }
+            }
+
+            @Override
+            public int size() {
+                return 2;
+            }
+        };
+
+        this.propertyDelegateUpper = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> (ClockPunchBlockEntity.this.salaryCounter >> 16) & 0xFFFF; // Upper 16 bits
+                    case 1 -> (ClockPunchBlockEntity.this.coinsCounter >> 16) & 0xFFFF; // Upper 16 bits
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> ClockPunchBlockEntity.this.salaryCounter = (ClockPunchBlockEntity.this.salaryCounter & 0xFFFF) | ((value & 0xFFFF) << 16);
+                    case 1 -> ClockPunchBlockEntity.this.coinsCounter = (ClockPunchBlockEntity.this.coinsCounter & 0xFFFF) | ((value & 0xFFFF) << 16);
                 }
             }
 
@@ -126,7 +160,7 @@ public class ClockPunchBlockEntity extends BlockEntity implements ExtendedScreen
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new ClockPunchScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegate);
+        return new ClockPunchScreenHandler(syncId, playerInventory, this.createData(), this.propertyDelegateLower, this.propertyDelegateUpper);
     }
 
     public void setOwner(UUID owner) {

@@ -16,10 +16,16 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 @Environment(EnvType.CLIENT)
 public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
     private static final Identifier TEXTURE = BsRolePlay.identifierOf("textures/gui/clockpunch_gui.png");
     private TextFieldWidget salaryCounter;
+    private String finishTimeString;
+    private long timeToNextPayment = 180 * 60 * 60 * 1000;
 
     public ClockPunchScreen(ClockPunchScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -27,6 +33,7 @@ public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
         this.backgroundHeight = 190;
         this.playerInventoryTitleY = 1000;
         this.titleY = 1000;
+        updateFinishTime();
     }
 
     @Override
@@ -36,15 +43,13 @@ public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
         this.salaryCounter = new TextFieldWidget(
                 this.textRenderer,
                 this.x + 88,
-                this.y + 62,
+                this.y + 61,
                 68,
                 19,
                 Text.literal("")
         );
 
-        if (this.handler != null && this.handler.blockEntity != null) {
-            this.salaryCounter.setText(this.handler.getSalaryCounter() + " RP");
-        }
+        this.salaryCounter.setText(this.handler.getSalaryCounter() + " RP");
 
         this.addSelectableChild(this.salaryCounter);
 
@@ -54,49 +59,38 @@ public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
                 Text.literal("Done"),
                 button -> this.onDoneButtonClicked()
         ).dimensions(
-                this.x + 67,
-                this.y + 59,
+                this.x + 102,
+                this.y + 83,
                 40,
                 18
         ).build());
     }
 
     private void onDoneButtonClicked() {
-        try {
-            if (this.salaryCounter == null || this.handler == null || this.handler.blockEntity == null) {
-                return;
-            }
-
-            String inputText = this.salaryCounter.getText();
-
-            String cleanedInput = inputText.replaceAll("[^0-9]", "");
-
-            if (cleanedInput.isEmpty()) {
-                this.salaryCounter.setText(this.handler.getSalaryCounter() + " RP");
-                this.salaryCounter.setFocused(true);
-                return;
-            }
-
-            int newValue;
-            try {
-                newValue = Integer.parseInt(cleanedInput);
-            } catch (NumberFormatException e) {
-                this.salaryCounter.setText(this.handler.getSalaryCounter() + " RP");
-                this.salaryCounter.setFocused(true);
-                return;
-            }
-
-            if (newValue < 0) {
-                this.close();
-                return;
-            }
-
-            this.handler.setSalaryCounter(newValue);
-            this.sendSalaryUpdatePacket(newValue);
-            this.close();
-        } catch (Exception e) {
-            BsRolePlay.LOGGER.error("Error in onDoneButtonClicked: ", e);
+        if (this.salaryCounter == null || this.handler == null || this.handler.blockEntity == null) {
+            return;
         }
+
+        String inputText = this.salaryCounter.getText();
+
+        String cleanedInput = inputText.replaceAll("[^0-9]", "");
+
+        if (cleanedInput.isEmpty()) {
+            this.salaryCounter.setText(this.handler.getSalaryCounter() + " RP");
+            this.salaryCounter.setFocused(true);
+            return;
+        }
+
+        int newValue = Integer.parseInt(cleanedInput);
+
+        if (newValue < 0) {
+            this.close();
+            return;
+        }
+
+        this.handler.setSalaryCounter(newValue);
+        this.sendSalaryUpdatePacket(newValue);
+        this.close();
     }
 
     private void sendSalaryUpdatePacket(int amount) {
@@ -116,7 +110,9 @@ public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
 
         this.salaryCounter.render(context, mouseX, mouseY, delta);
 
-        context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(this.handler.getCoinsCounter() + " RP"), this.x + 205, this.y + 15, 0xffffff);
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(this.handler.getCoinsCounter() + " RP"), this.x + 205, this.y + 12, 0xffffff);
+
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(finishTimeString), this.x + 96, this.y + 143, 0xffffff);
 
         drawMouseoverTooltip(context, mouseX, mouseY);
     }
@@ -127,5 +123,20 @@ public class ClockPunchScreen extends HandledScreen<ClockPunchScreenHandler> {
             return true;
         }
         return super.charTyped(chr, modifiers);
+    }
+
+    @Override
+    protected void handledScreenTick() {
+        super.handledScreenTick();
+        updateFinishTime();
+    }
+
+    private void updateFinishTime() {
+        long currentTime = System.currentTimeMillis();
+        long finishTime = currentTime + timeToNextPayment;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getDefault());
+        finishTimeString = sdf.format(new Date(finishTime));
     }
 }

@@ -31,7 +31,7 @@ public class WalletScreenHandler extends ScreenHandler {
         this.walletStack = walletStack;
         this.color = DyedColorComponent.getColor(walletStack, BsRolePlayClient.getColor(10511680));
 
-        this.addSlot(new Slot(this.inputInventory, 0, 44, 46) {
+        this.addSlot(new InputSlot(this.inputInventory, 0, 44, 46) {
             @Override
             public boolean canInsert(ItemStack stack) {
                 return stack.getItem() instanceof CoinItem;
@@ -159,6 +159,22 @@ public class WalletScreenHandler extends ScreenHandler {
     private void addPlayerHotbar(PlayerInventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + 9 + i * 18, 142));
+        }
+    }
+
+    public class InputSlot extends Slot {
+        public InputSlot(Inventory inventory, int index, int x, int y) {
+            super(inventory, index, x, y);
+        }
+
+        @Override
+        public boolean canInsert(ItemStack stack) {
+            return stack.getItem() instanceof CoinItem coinItem && coinItem.currencyValue > 0;
+        }
+
+        @Override
+        public boolean disablesDynamicDisplay() {
+            return true;
         }
     }
 

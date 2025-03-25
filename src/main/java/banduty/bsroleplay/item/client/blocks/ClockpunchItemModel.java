@@ -8,7 +8,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ClockpunchItemModel extends GeoModel<ClockpunchItem> {
     @Override
     public Identifier getModelResource(ClockpunchItem animatable) {
-        return BsRolePlay.identifierOf("geo/clockpunch.geo.json");
+        return BsRolePlay.identifierOf("geo/clockpunch_ground.geo.json");
     }
 
     @Override
